@@ -3,24 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Climate Change & Energy Transition</title>
+    <title>Climate & Energy Transition: Data & Insights</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: "Earthy Blues & Greens" - Building on the "Calm Harmony" with a slightly richer and more varied set of greens and blues, combined with warm neutrals. Main background is a soft beige (#FAFAF6), headers and accents use deeper greens (#0A5B4C, #0F766E), and blues (#2563EB) for emphasis. Data visualization colors will be updated to reflect this palette. -->
-    <!-- Application Structure Plan: The SPA is designed as a narrative journey through four core pillars, moving from the high-level 'why' (Policy & Net Zero) to the practical 'how' (Technologies & Corporate Action). 1. **Home/Landing:** An engaging entry point with key stats (the 1.5°C goal vs. reality) to establish urgency, followed by clickable cards for each of the four main pillars, providing a direct and intuitive navigation path. 2. **Pillar 1: Climate Policy:** Explores climate policy, starting with key overarching charts and stats. It then offers interactive sub-sections via accordions: "The Paris Agreement," "The Global Stocktake," "Climate Finance," and "Carbon Pricing Mechanisms," each revealing detailed content with proper internal headings on click. Includes an LLM-powered feature to explain policy terms. 3. **Pillar 2: The Road to Net Zero:** Focuses on achieving net zero, beginning with key charts on renewables and efficiency, then presenting sub-sections via accordions: "Renewables Surge," "Energy Efficiency Imperative," "Cross-Sectoral Decarbonization Pathways," and "Role of Innovation and Carbon Removal," providing detailed articles with proper internal headings. Features an LLM-powered tool to suggest decarbonization action plans by sector. 4. **Pillar 3: The Value Chain Challenge (Scope 3):** Deconstructs Scope 3 emissions, starting with key stats and the Scope 3 dominance chart, then using accordions for sub-sections: "Understanding the Value Chain Footprint," "Challenges in Measurement and Data Quality," "Leveraging Supplier Engagement," and "Regulatory Landscape and Reporting," offering detailed explanations with proper internal headings. 5. **Pillar 4: Energy Transition Technologies:** A deep dive into key technologies, leading with an interactive technology cost comparison chart, then using accordions for sub-sections: "Renewable Energy Technologies," "Energy Storage Solutions," "Green Hydrogen & Derivatives," and "Industrial Decarbonization," each featuring detailed content with proper internal headings. 6. **About Me:** A dedicated section presenting a compelling narrative of my professional journey in climate and energy, highlighting key skills with interactive visual cards that reveal brief stories of their application via dropdowns, without explicit education details. This structure enhances user exploration, allowing for both broad overview (initial stats/charts) and in-depth understanding (interactive accordions) through a more logical and visually appealing content disclosure. -->
-    <!-- Visualization & Content Choices: The application uses a mix of visualizations to achieve different communication goals, all rendered using Chart.js on Canvas. 1. **GHG Reduction Gap (Policy Section):** Goal: Compare. Viz: Bar Chart. Interaction: Hover for details. Justification: Clearly visualizes the stark difference between the 43% reduction needed and the 2.6% committed under current NDCs. Placed at the top of the policy section. 2. **Global Carbon Budget (Policy Section):** Goal: Illustrate change/scenario. Viz: Line Chart. Interaction: Hover. Justification: Shows the remaining carbon budget and how different emission pathways impact it, emphasizing the urgency of action. Placed at the top of the policy section. 3. **Renewables Capacity Gap (Net Zero Section):** Goal: Compare/Change. Viz: Bar Chart. Interaction: Hover. Justification: Shows the gap between the COP28 tripling goal and what current national plans are set to deliver. Placed at the top of the Net Zero section. 4. **Energy Efficiency Gap (Net Zero Section):** Goal: Change. Viz: Line Chart. Interaction: Hover. Justification: Illustrates the slowdown in energy intensity improvement versus the 4% target, highlighting a critical action area. Placed at the top of the Net Zero section. 5. **Scope 3 Emissions Breakdown (Scope 3 Section):** Goal: Inform/Proportions. Viz: Donut Chart. Interaction: Hover. Justification: Immediately conveys the overwhelming contribution of Scope 3 emissions to a typical company's footprint. Placed at the top of the Scope 3 section. 6. **Technology Cost Comparison (Technologies Section):** Goal: Compare. Viz: Bar Chart. Interaction: Buttons to switch between tech (e.g., Green Steel vs. Traditional). Justification: Provides a clear, direct comparison of the cost premiums for green technologies, explaining a key barrier to adoption. Placed at the top of the Technologies section. All textual content is structured into interactive accordion panels with proper headings and content. New LLM integrations enhance content understanding and provide actionable insights. Placeholder image URLs are used for pillar boxes and simple emojis/Unicode for skill visuals. Colors refined for visual appeal and readability. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #FAFAF6; margin: 0; padding: 0; } /* Soft beige background, reset body margins/padding */
-        .container { max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; } /* Centered container with responsive padding */
-        @media (min-width: 640px) { .container { padding-left: 1.5rem; padding-right: 1.5rem; } } /* sm:p-6 */
-        @media (min-width: 1024px) { .container { padding-left: 2rem; padding-right: 2rem; } } /* lg:p-8 */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
 
-        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
-        @media (max-width: 768px) { .chart-container { height: 300px; max-height: 350px; } }
+        .container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        @media (min-width: 640px) { .container { padding-left: 1.5rem; padding-right: 1.5rem; } }
+        @media (min-width: 1024px) { .container { padding-left: 2rem; padding-right: 2rem; } }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 40vh;
+            max-height: 350px;
+        }
+        @media (max-width: 768px) { .chart-container { height: 300px; max-height: 300px; } }
+
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            line-height: 2.5rem;
+        }
+
+        .stat-number {
+            font-size: 3.75rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        
         .nav-link { transition: color 0.3s, border-color 0.3s; }
-        .nav-link.active { color: #0A5B4C; border-bottom-color: #0A5B4C; } /* Darker green for active link */
+        .nav-link.active { color: #0D6EFD; border-bottom-color: #0D6EFD; }
+
         .content-section { display: none; }
         .content-section.active { display: block; }
         .stat-card { transition: transform 0.3s, box-shadow 0.3s; }
@@ -42,14 +73,13 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-            display: flex; /* Use flex to center modal content */
+            display: flex;
             align-items: center;
             justify-content: center;
         }
         .modal-content {
             background-color: #fefefe;
-            margin: auto; /* Centering */
+            margin: auto;
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -74,7 +104,7 @@
         }
         .loading-spinner {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #0A5B4C; /* Matching new green */
+            border-top: 4px solid #0D6EFD;
             border-radius: 50%;
             width: 30px;
             height: 30px;
@@ -88,14 +118,14 @@
         }
 
         .accordion-item {
-            margin-bottom: 0.75rem; /* Consistent space between accordion items */
+            margin-bottom: 0.75rem;
         }
         .accordion-item:last-child {
-            margin-bottom: 0; /* No margin after the last item */
+            margin-bottom: 0;
         }
 
         .accordion-header {
-            background-color: #E6F3F0; /* Lighter green background */
+            background-color: #e3f2fd;
             padding: 1rem 1.5rem;
             border-radius: 0.75rem;
             cursor: pointer;
@@ -103,30 +133,30 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            color: #0A5B4C; /* Darker green text */
+            color: #0D6EFD;
             transition: background-color 0.3s ease, border-bottom-left-radius 0.3s, border-bottom-right-radius 0.3s;
-            border: 1px solid #C8E5D9; /* Light green border */
+            border: 1px solid #cce5ff;
         }
         .accordion-header.active {
              border-bottom-left-radius: 0;
              border-bottom-right-radius: 0;
         }
         .accordion-header:hover {
-            background-color: #D1F0E4; /* Slightly darker green on hover */
+            background-color: #cfe8fe;
         }
         .accordion-content {
             background-color: #ffffff;
-            border: 1px solid #C8E5D9; /* Light green border */
+            border: 1px solid #cce5ff;
             border-top: none;
             border-radius: 0 0 0.75rem 0.75rem;
             padding: 1.5rem;
-            max-height: 0; /* Hidden by default for transition */
-            overflow: hidden; /* Hide overflow during transition */
-            transition: max-height 0.4s ease-out, opacity 0.4s ease-out; /* Smooth animation */
-            opacity: 0; /* Start hidden for smooth fade-in */
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+            opacity: 0;
         }
-        .accordion-content.open { /* Use 'open' for active state for clarity with 'active' on header */
-            max-height: 1000px; /* Needs to be large enough to contain content */
+        .accordion-content.open {
+            max-height: 1000px;
             opacity: 1;
         }
 
@@ -148,48 +178,85 @@
             box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
         }
         .skill-icon {
-            font-size: 3.5rem; /* Slightly larger icons */
+            font-size: 3.5rem;
             margin-bottom: 0.75rem;
-            color: #0A5B4C; /* Matching new dark green */
+            color: #0D6EFD;
         }
         .skill-description {
             margin-top: 1rem;
-            background-color: #F0FDF4; /* Light green background for description */
+            background-color: #f0fdf4;
             padding: 0.75rem;
             border-radius: 0.5rem;
             font-size: 0.875rem;
-            color: #065F46; /* Darker green text */
-            max-height: 0; /* Hidden by default for transition */
-            overflow: hidden; /* Hide overflow during transition */
-            transition: max-height 0.4s ease-out, opacity 0.4s ease-out; /* Smooth animation */
-            opacity: 0; /* Start hidden for smooth fade-in */
+            color: #065F46;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+            opacity: 0;
         }
-        .skill-description.open { /* Use 'open' for active state */
-            max-height: 200px; /* Sufficient height for text */
+        .skill-description.open {
+            max-height: 200px;
             opacity: 1;
+        }
+
+        /* Flow Diagram specific styles */
+        .flow-diagram-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .flow-diagram-item {
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-align: center;
+            flex: 1 1 auto;
+            min-width: 150px;
+            max-width: 250px;
+        }
+        .flow-arrow {
+            font-size: 2.5rem;
+            color: #FD7E14;
+            margin: 0 0.5rem;
+            flex-shrink: 0;
+        }
+        @media (max-width: 767px) {
+            .flow-diagram-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .flow-arrow {
+                transform: rotate(90deg);
+                margin: 0.5rem 0;
+            }
         }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-800">
+
+<body class="text-gray-800">
 
     <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex-shrink-0">
-                    <h1 class="text-2xl font-bold text-[#0A5B4C]">The Climate Transition</h1> <!-- Updated green -->
+                    <h1 class="text-2xl font-bold text-[#0D6EFD]">Climate & Energy Transition</h1>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#home" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-stone-600 hover:text-[#0A5B4C] border-b-2 border-transparent">Home</a>
-                        <a href="#policy" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-stone-600 hover:text-[#0A5B4C] border-b-2 border-transparent">Climate Policy</a>
-                        <a href="#netzero" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-stone-600 hover:text-[#0A5B4C] border-b-2 border-transparent">Achieving Net Zero</a>
-                        <a href="#scope3" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-stone-600 hover:text-[#0A5B4C] border-b-2 border-transparent">Scope 3 Emissions</a>
-                        <a href="#tech" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-stone-600 hover:text-[#0A5B4C] border-b-2 border-transparent">Transition Technologies</a>
-                        <a href="#about" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-stone-600 hover:text-[#0A5B4C] border-b-2 border-transparent">About Me</a>
+                        <a href="#home" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-[#0D6EFD] border-b-2 border-transparent">Home</a>
+                        <a href="#policy" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-[#0D6EFD] border-b-2 border-transparent">Climate Policy</a>
+                        <a href="#netzero" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-[#0D6EFD] border-b-2 border-transparent">Achieving Net Zero</a>
+                        <a href="#scope3" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-[#0D6EFD] border-b-2 border-transparent">Scope 3 Emissions</a>
+                        <a href="#tech" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-[#0D6EFD] border-b-2 border-transparent">Transition Technologies</a>
+                        <a href="#about" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-[#0D6EFD] border-b-2 border-transparent">About Me</a>
                     </div>
                 </div>
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-stone-500 hover:text-[#0A5B4C] hover:bg-stone-100 focus:outline-none">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-[#0D6EFD] hover:bg-gray-100 focus:outline-none">
                         <span class="sr-only">Open main menu</span>
                         <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -199,113 +266,127 @@
             </div>
             <div id="mobile-menu" class="md:hidden hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <a href="#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-stone-600 hover:text-[#0A5B4C] hover:bg-stone-100">Home</a>
-                    <a href="#policy" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-stone-600 hover:text-[#0A5B4C] hover:bg-stone-100">Climate Policy</a>
-                    <a href="#netzero" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-stone-600 hover:text-[#0A5B4C] hover:bg-stone-100">Achieving Net Zero</a>
-                    <a href="#scope3" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-stone-600 hover:text-[#0A5B4C] hover:bg-stone-100">Scope 3 Emissions</a>
-                    <a href="#tech" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-stone-600 hover:text-[#0A5B4C] hover:bg-stone-100">Transition Technologies</a>
-                    <a href="#about" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-stone-600 hover:text-[#0A5B4C] hover:bg-stone-100">About Me</a>
+                    <a href="#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-[#0D6EFD] hover:bg-gray-100">Home</a>
+                    <a href="#policy" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-[#0D6EFD] hover:bg-gray-100">Climate Policy</a>
+                    <a href="#netzero" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-[#0D6EFD] hover:bg-gray-100">Achieving Net Zero</a>
+                    <a href="#scope3" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-[#0D6EFD] hover:bg-gray-100">Scope 3 Emissions</a>
+                    <a href="#tech" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-[#0D6EFD] hover:bg-gray-100">Transition Technologies</a>
+                    <a href="#about" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-[#0D6EFD] hover:bg-gray-100">About Me</a>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main class="container mx-auto p-4 sm:p-6 lg:p-8">
+    <main class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         
+        <!-- Home Section -->
         <section id="home" class="content-section">
-            <div class="text-center bg-white p-8 rounded-xl shadow-lg border border-stone-200">
-                <h2 class="text-4xl font-bold text-stone-900 mb-4">The Urgent Path to 1.5°C</h2>
-                <p class="max-w-3xl mx-auto text-stone-600 text-lg">
-                    The world faces a critical challenge: limiting global warming to 1.5°C above pre-industrial levels to avoid the most catastrophic impacts of climate change. This requires a rapid, fundamental transformation of our global energy systems. Explore the key policies, targets, and technologies driving this transition, and understand the significant gaps that remain between ambition and action.
+            <div class="text-center mb-20">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-[#0D6EFD]">The Climate Ambition Gap</h1>
+                <p class="mt-4 max-w-4xl mx-auto text-lg text-gray-600">
+                    The world has committed to limiting global warming to 1.5°C, a goal requiring a fundamental and rapid transformation of our energy systems. This report analyzes the critical gaps between our climate ambitions, current policies, and the technological realities on the path to Net Zero.
                 </p>
             </div>
             <div class="grid md:grid-cols-3 gap-6 mt-8">
-                <div class="stat-card bg-white p-6 rounded-xl shadow-md border border-stone-200 text-center">
+                <div class="stat-card bg-white p-6 rounded-xl shadow-md border border-gray-200 text-center">
                     <p class="text-5xl font-bold text-sky-600">-43%</p>
-                    <h3 class="mt-2 text-lg font-semibold text-stone-800">Required GHG Reduction</h3>
-                    <p class="text-sm text-stone-500">Global emissions must fall by 43% by 2030 to stay on the 1.5°C path.</p>
+                    <h3 class="mt-2 text-lg font-semibold text-gray-800">Required GHG Reduction</h3>
+                    <p class="text-sm text-gray-500">Global emissions must fall by 43% by 2030 to stay on the 1.5°C path.</p>
                 </div>
-                <div class="stat-card bg-white p-6 rounded-xl shadow-md border border-stone-200 text-center">
-                    <p class="text-5xl font-bold text-amber-600">-2.6%</p>
-                    <h3 class="mt-2 text-lg font-semibold text-stone-800">Committed GHG Reduction</h3>
-                    <p class="text-sm text-stone-500">Current national plans (NDCs) only lead to a 2.6% reduction by 2030.</p>
+                <div class="stat-card bg-white p-6 rounded-xl shadow-md border border-gray-200 text-center">
+                    <p class="text-5xl font-bold text-orange-600">-2.6%</p>
+                    <h3 class="mt-2 text-lg font-semibold text-gray-800">Committed GHG Reduction</h3>
+                    <p class="text-sm text-gray-500">Current national plans (NDCs) only lead to a 2.6% reduction by 2030.</p>
                 </div>
-                <div class="stat-card bg-white p-6 rounded-xl shadow-md border border-stone-200 text-center">
+                <div class="stat-card bg-white p-6 rounded-xl shadow-md border border-gray-200 text-center">
                     <p class="text-5xl font-bold text-emerald-600">3x</p>
-                    <h3 class="mt-2 text-lg font-semibold text-stone-800">Renewables Goal</h3>
-                    <p class="text-sm text-stone-500">COP28 called for a tripling of global renewable energy capacity by 2030.</p>
+                    <h3 class="mt-2 text-lg font-semibold text-gray-800">Renewables Goal</h3>
+                    <p class="text-sm text-gray-500">COP28 called for a tripling of global renewable energy capacity by 2030.</p>
                 </div>
             </div>
 
             <div class="mt-12 text-center">
-                <h2 class="text-3xl font-bold text-stone-900 mb-6">Our Core Pillars</h2>
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Explore Our Core Pillars</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="pillar-card bg-white rounded-xl shadow-md border border-stone-200 overflow-hidden" onclick="window.location.hash='#policy';">
+                    <div class="pillar-card bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden" onclick="window.location.hash='#policy';">
                         <img src="https://placehold.co/400x200/a8a29e/ffffff?text=Climate+Policy" alt="Climate Policy" class="w-full h-40 object-cover">
                         <div class="p-4">
-                            <h3 class="text-xl font-semibold text-stone-900 mb-2">Climate Policy</h3>
-                            <p class="text-stone-600 text-sm">Understanding the global agreements, national commitments, and regulatory frameworks shaping our climate action. Explore the ambition-action gap.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Climate Policy</h3>
+                            <p class="text-gray-600 text-sm">Global agreements, national commitments, and regulatory frameworks.</p>
                         </div>
                     </div>
-                    <div class="pillar-card bg-white rounded-xl shadow-md border border-stone-200 overflow-hidden" onclick="window.location.hash='#netzero';">
-                        <img src="https://placehold.co/400x200/0A5B4C/ffffff?text=Achieving+Net+Zero" alt="Achieving Net Zero" class="w-full h-40 object-cover"> <!-- Updated green -->
+                    <div class="pillar-card bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden" onclick="window.location.hash='#netzero';">
+                        <img src="https://placehold.co/400x200/20C997/ffffff?text=Achieving+Net+Zero" alt="Achieving Net Zero" class="w-full h-40 object-cover">
                         <div class="p-4">
-                            <h3 class="text-xl font-semibold text-stone-900 mb-2">Achieving Net Zero</h3>
-                            <p class="text-stone-600 text-sm">Delving into the strategies and pathways required to reach net-zero emissions, focusing on renewable energy scale-up and energy efficiency.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Achieving Net Zero</h3>
+                            <p class="text-gray-600 text-sm">Strategies and pathways to reach net-zero emissions, including renewables and efficiency.</p>
                         </div>
                     </div>
-                    <div class="pillar-card bg-white rounded-xl shadow-md border border-stone-200 overflow-hidden" onclick="window.location.hash='#scope3';">
-                        <img src="https://placehold.co/400x200/2563EB/ffffff?text=Scope+3+Emissions" alt="Scope 3 Emissions" class="w-full h-40 object-cover"> <!-- Updated blue -->
+                    <div class="pillar-card bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden" onclick="window.location.hash='#scope3';">
+                        <img src="https://placehold.co/400x200/0D6EFD/ffffff?text=Scope+3+Emissions" alt="Scope 3 Emissions" class="w-full h-40 object-cover">
                         <div class="p-4">
-                            <h3 class="text-xl font-semibold text-stone-900 mb-2">Scope 3 Emissions</h3>
-                            <p class="text-stone-600 text-sm">Examining the complex challenge of emissions within a company's value chain, and how to measure, report, and reduce this dominant footprint.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Scope 3 Emissions</h3>
+                            <p class="text-gray-600 text-sm">Challenges of emissions within a company's value chain and solutions.</p>
                         </div>
                     </div>
-                    <div class="pillar-card bg-white rounded-xl shadow-md border border-stone-200 overflow-hidden" onclick="window.location.hash='#tech';">
-                        <img src="https://placehold.co/400x200/F59E0B/ffffff?text=Transition+Technologies" alt="Transition Technologies" class="w-full h-40 object-cover">
+                    <div class="pillar-card bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden" onclick="window.location.hash='#tech';">
+                        <img src="https://placehold.co/400x200/FD7E14/ffffff?text=Transition+Technologies" alt="Transition Technologies" class="w-full h-40 object-cover">
                         <div class="p-4">
-                            <h3 class="text-xl font-semibold text-stone-900 mb-2">Energy Transition Technologies</h3>
-                            <p class="text-stone-600 text-sm">Exploring the innovative technologies driving the shift to a sustainable energy future, from established renewables to emerging solutions.</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Energy Transition Technologies</h3>
+                            <p class="text-gray-600 text-sm">Innovative technologies driving the shift to a sustainable energy future.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Climate Policy Section -->
         <section id="policy" class="content-section">
-             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-stone-900">Climate Policy: The Ambition-Action Gap</h2>
-                <p class="mt-4 max-w-3xl mx-auto text-stone-600">This section explores the foundations of global climate policy, centered on the Paris Agreement. While the agreement sets ambitious temperature goals, a significant gap persists between these targets and the collective commitments made by nations (NDCs). The charts below visualize this critical shortfall, highlighting the urgent need for more aggressive climate action worldwide.</p>
-                <button id="openPolicyExplainer" class="mt-4 bg-[#0A5B4C] hover:bg-[#064e3b] text-white font-bold py-2 px-4 rounded-full shadow-md transition duration-300">
+            <div class="text-center mb-12">
+                <h2 class="section-title text-center mb-12">Climate Policy: The Ambition-Action Gap</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-gray-600">This section explores the foundations of global climate policy, centered on the Paris Agreement. While the agreement sets ambitious temperature goals, a significant gap persists between these targets and the collective commitments made by nations (NDCs). The charts below visualize this critical shortfall, highlighting the urgent need for more aggressive climate action worldwide.</p>
+                <button id="openPolicyExplainer" class="mt-4 bg-[#0D6EFD] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-md transition duration-300">
                     ✨ Explain Policy Term
                 </button>
             </div>
             
-            <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200 mb-8">
-                <h3 class="text-xl font-semibold text-center mb-4">2030 Emissions Gap: Required vs. Committed (IEA Analysis)</h3>
-                <div class="chart-container">
-                    <canvas id="ghgChart"></canvas>
+            <!-- Infographic content for Policy -->
+            <div class="grid md:grid-cols-2 gap-8 items-center mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-center mb-4">2030 Emissions Reduction: Required vs. Committed</h3>
+                    <div class="chart-container">
+                        <canvas id="ghgGapChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-4 text-center">To meet the Paris Agreement's 1.5°C target, a <strong class="text-[#FD7E14]">43%</strong> reduction in global GHG emissions is required by 2030. Current national commitments (NDCs) only amount to a <strong class="text-[#0D6EFD]">2.6%</strong> reduction, revealing a staggering ambition gap.</p>
                 </div>
-                <p class="text-sm text-stone-500 mt-4 text-center">The Paris Agreement requires a 43% GHG reduction by 2030 to limit warming to 1.5°C. However, current Nationally Determined Contributions (NDCs) from all countries combined only add up to a 2.6% reduction, creating a massive gap that threatens global climate stability. <i>Source: IEA Net Zero by 2050 Report</i></p>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-center mb-4">Climate Finance: The Trillion Dollar Challenge</h3>
+                     <div class="chart-container">
+                        <canvas id="financeGapChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-4 text-center">While the annual <strong class="text-[#20C997]">$100B</strong> finance goal for developing nations was met in 2022, the actual estimated need to drive the transition is over <strong class="text-[#FD7E14]">$1.3 Trillion</strong> annually, highlighting the critical need to scale up private finance.</p>
+                </div>
             </div>
 
-            <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200 mb-8">
-                <h3 class="text-xl font-semibold text-center mb-4">Global Carbon Budget Trajectory (GtCO2) (IPCC Scenarios)</h3>
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 mb-8">
+                <h3 class="text-xl font-bold text-center mb-4">Global Carbon Budget Trajectory (GtCO2) (IPCC Scenarios)</h3>
                 <div class="chart-container">
                     <canvas id="carbonBudgetChart"></canvas>
                 </div>
-                <p class="text-sm text-stone-500 mt-4 text-center">This chart illustrates the remaining carbon budget for 1.5°C. The "High Emissions" scenario rapidly depletes the budget, while the "Paris Aligned" path shows the drastic cuts needed to stay within limits. <i>Source: IPCC Sixth Assessment Report (AR6)</i></p>
+                <p class="text-sm text-gray-500 mt-4 text-center">This chart illustrates the remaining carbon budget for 1.5°C. The "High Emissions" scenario rapidly depletes the budget, while the "Paris Aligned" path shows the drastic cuts needed to stay within limits. <i>Source: IPCC Sixth Assessment Report (AR6)</i></p>
             </div>
+            <!-- End Infographic content for Policy -->
 
-            <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200">
+            <!-- Accordion sub-sections for Policy -->
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
                 <div class="accordion-item">
                     <div class="accordion-header" data-target="policy-sub1">
                         <span>1. The Paris Agreement: Cornerstone of Global Climate Action</span>
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="policy-sub1">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Past Trend/Status: Evolution of Global Climate Governance</h4>
-                        <p class="text-stone-600 mb-4">Global climate policy has evolved significantly since the first Earth Summit in 1992, culminating in the landmark Paris Agreement in 2015. This agreement, a legally binding international treaty, set the ambitious long-term goal of limiting global warming to well below 2°C, preferably to 1.5°C, compared to pre-industrial levels. Unlike its predecessor, the Kyoto Protocol, which had top-down emission targets, the Paris Agreement adopted a more flexible, bottom-up approach through Nationally Determined Contributions (NDCs). Each country voluntarily outlines its climate action plans, fostering broad participation. Historically, international agreements have struggled with enforcement and achieving collective ambition, but Paris marked a shift towards a more inclusive framework. <i>(Source: UNFCCC)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Past Trend/Status: Evolution of Global Climate Governance</h4>
+                        <p class="text-gray-600 mb-4">Global climate policy has evolved significantly since the first Earth Summit in 1992, culminating in the landmark Paris Agreement in 2015. This agreement, a legally binding international treaty, set the ambitious long-term goal of limiting global warming to well below 2°C, preferably to 1.5°C, compared to pre-industrial levels. Unlike its predecessor, the Kyoto Protocol, which had top-down emission targets, the Paris Agreement adopted a more flexible, bottom-up approach through Nationally Determined Contributions (NDCs). Each country voluntarily outlines its climate action plans, fostering broad participation. Historically, international agreements have struggled with enforcement and achieving collective ambition, but Paris marked a shift towards a more inclusive framework. <i>(Source: UNFCCC)</i></p>
                     </div>
                 </div>
 
@@ -315,8 +396,8 @@
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="policy-sub2">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Current Commitment vs. Target: The Emissions Gap</h4>
-                        <p class="text-stone-600 mb-4">Despite the aspirational 1.5°C target set in Paris, current global commitments (NDCs) are woefully insufficient. As the "2030 Emissions Gap" chart illustrates, while a 43% reduction in global greenhouse gas emissions by 2030 (compared to 2019 levels) is necessary for the 1.5°C pathway, existing NDCs from all countries combined only lead to a mere 2.6% reduction. This creates a massive 'emissions gap' of roughly 40 percentage points, meaning the world is currently on track for warming well above 2°C, risking severe climate impacts. The Glasgow Climate Pact (COP26) urged countries to revisit and strengthen their 2030 targets by the end of 2022, but progress has been slow. The Global Stocktake, a process to periodically assess collective progress towards the Paris Agreement's goals, confirmed this significant shortfall. <i>(Source: UNEP Emissions Gap Report, IEA)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Current Commitment vs. Target: The Emissions Gap</h4>
+                        <p class="text-gray-600 mb-4">Despite the aspirational 1.5°C target set in Paris, current global commitments (NDCs) are woefully insufficient. As the "2030 Emissions Gap" chart illustrates, while a 43% reduction in global greenhouse gas emissions by 2030 (compared to 2019 levels) is necessary for the 1.5°C pathway, existing NDCs from all countries combined only lead to a mere 2.6% reduction. This creates a massive 'emissions gap' of roughly 40 percentage points, meaning the world is currently on track for warming well above 2°C, risking severe climate impacts. The Glasgow Climate Pact (COP26) urged countries to revisit and strengthen their 2030 targets by the end of 2022, but progress has been slow. The Global Stocktake, a process to periodically assess collective progress towards the Paris Agreement's goals, confirmed this significant shortfall. <i>(Source: UNEP Emissions Gap Report, IEA)</i></p>
                     </div>
                 </div>
 
@@ -326,9 +407,9 @@
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="policy-sub3">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Key Actions Needed: Bridging the Climate Finance Gap</h4>
-                        <p class="text-stone-600 mb-4">Mobilizing sufficient and accessible finance is paramount for achieving climate goals, especially for developing nations that are often most vulnerable to climate impacts yet least responsible for historical emissions. The historical commitment for developed countries to provide $100 billion annually by 2020 to developing nations has been largely unmet. The true scale of investment required for a global energy transition is trillions, not billions. New financial mechanisms, blended finance (combining public and private funds), and de-risking tools are essential to unlock private capital and ensure a just transition that doesn't leave vulnerable nations behind. This includes funding for both mitigation and adaptation, with a focus on grants and concessional loans for low-income countries. <i>(Source: OECD, UNFCCC)</i></p>
-                        <ul class="list-disc list-inside text-stone-600 space-y-2 ml-4">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Key Actions Needed: Bridging the Climate Finance Gap</h4>
+                        <p class="text-gray-600 mb-4">Mobilizing sufficient and accessible finance is paramount for achieving climate goals, especially for developing nations that are often most vulnerable to climate impacts yet least responsible for historical emissions. The historical commitment for developed countries to provide $100 billion annually by 2020 to developing nations has been largely unmet. The true scale of investment required for a global energy transition is trillions, not billions. New financial mechanisms, blended finance (combining public and private funds), and de-risking tools are essential to unlock private capital and ensure a just transition that doesn't leave vulnerable nations behind. This includes funding for both mitigation and adaptation, with a focus on grants and concessional loans for low-income countries. <i>(Source: OECD, UNFCCC)</i></p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
                             <li><strong class="font-semibold">Scale Up Public Finance:</strong> Developed nations must meet and exceed their climate finance commitments, ensuring predictable and transparent flows.</li>
                             <li><strong class="font-semibold">Leverage Private Capital:</strong> Implement policies and de-risking instruments to attract private investment into climate projects, particularly in emerging economies.</li>
                             <li><strong class="font-semibold">Reform Multilateral Development Banks (MDBs):</strong> MDBs should optimize their balance sheets and increase lending for climate action, acting as catalysts for broader financial shifts.</li>
@@ -344,9 +425,9 @@
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="policy-sub4">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Key Actions Needed: Effective Carbon Pricing Strategies</h4>
-                        <p class="text-stone-600 mb-4">Carbon pricing, through mechanisms like carbon taxes or Emissions Trading Systems (ETS), is a critical economic tool to internalize the cost of emissions and incentivize decarbonization. Over 60 jurisdictions globally have implemented some form of carbon pricing, but the coverage and price levels vary widely, often remaining too low to drive necessary transformative change. Effective carbon pricing can provide a clear economic signal for businesses to invest in cleaner technologies and practices, fostering innovation and shifting consumer behavior. Revenue generated from carbon pricing can be used for public good, such as climate investments, tax cuts, or supporting vulnerable communities. <i>(Source: World Bank Carbon Pricing Dashboard)</i></p>
-                        <ul class="list-disc list-inside text-stone-600 space-y-2 ml-4">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Key Actions Needed: Effective Carbon Pricing Strategies</h4>
+                        <p class="text-gray-600 mb-4">Carbon pricing, through mechanisms like carbon taxes or Emissions Trading Systems (ETS), is a critical economic tool to internalize the cost of emissions and incentivize decarbonization. Over 60 jurisdictions globally have implemented some form of carbon pricing, but the coverage and price levels vary widely, often remaining too low to drive necessary transformative change. Effective carbon pricing can provide a clear economic signal for businesses to invest in cleaner technologies and practices, fostering innovation and shifting consumer behavior. Revenue generated from carbon pricing can be used for public good, such as climate investments, tax cuts, or supporting vulnerable communities. <i>(Source: World Bank Carbon Pricing Dashboard)</i></p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
                             <li><strong class="font-semibold">Expand Coverage:</strong> Implement carbon pricing across more sectors and regions, ensuring broader emission coverage.</li>
                             <li><strong class="font-semibold">Increase Price Levels:</strong> Raise carbon prices to levels that meaningfully drive investment in low-carbon solutions and discourage high-emission activities.</li>
                             <li><strong class="font-semibold">Ensure Equity:</strong> Design carbon pricing mechanisms to be socially equitable, mitigating impacts on vulnerable households and industries, potentially through revenue recycling.</li>
@@ -356,51 +437,56 @@
                     </div>
                 </div>
             </div>
+            <!-- End Accordion sub-sections for Policy -->
         </section>
 
+        <!-- Achieving Net Zero Section -->
         <section id="netzero" class="content-section">
              <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-stone-900">The Road to Net Zero</h2>
-                <p class="mt-4 max-w-3xl mx-auto text-stone-600">Achieving net-zero emissions by 2050 is essential to meet the 1.5°C goal. This requires massive scale-ups in renewable energy and dramatic improvements in energy efficiency. This section visualizes the progress and shortfalls in these two critical areas, based on the global pledges made at COP28.</p>
-                 <button id="openDecarbSuggester" class="mt-4 bg-[#0A5B4C] hover:bg-[#064e3b] text-white font-bold py-2 px-4 rounded-full shadow-md transition duration-300">
+                <h2 class="section-title text-center mb-12">The Road to Net Zero</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-gray-600">Achieving net-zero emissions by 2050 is essential to meet the 1.5°C goal. This requires massive scale-ups in renewable energy and dramatic improvements in energy efficiency. This section visualizes the progress and shortfalls in these two critical areas, based on the global pledges made at COP28.</p>
+                 <button id="openDecarbSuggester" class="mt-4 bg-[#0D6EFD] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-md transition duration-300">
                     ✨ Suggest Decarbonization Plan
                 </button>
             </div>
             
-            <div class="grid lg:grid-cols-2 gap-8 mb-8">
-                <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200">
-                    <h3 class="text-xl font-semibold text-center mb-4">Renewables Goal: Halfway There (IEA Projections)</h3>
-                    <div class="chart-container">
-                        <canvas id="renewablesChart"></canvas>
+            <!-- Infographic content for Net Zero (Previously missing, now re-added) -->
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center">
+                     <h3 class="text-xl font-bold mb-4">Tripling Renewable Capacity by 2030</h3>
+                     <div class="chart-container" style="height: 280px;">
+                        <canvas id="renewablesGoalChart"></canvas>
                     </div>
-                    <p class="text-sm text-stone-500 mt-4 text-center">The world pledged to triple renewable capacity by 2030. However, current national plans are on track to deliver only half of the required growth, highlighting a major implementation gap. <i>Source: IEA Renewables 2023 Report</i></p>
+                    <p class="text-sm text-gray-500 mt-4">At COP28, nations pledged to triple global renewable capacity. However, analysis shows current national plans are on track to deliver only <strong class="text-[#FD7E14]">half</strong> of the required growth.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200">
-                    <h3 class="text-xl font-semibold text-center mb-4">Energy Efficiency: Losing Pace (IEA Analysis)</h3>
-                    <div class="chart-container">
-                        <canvas id="efficiencyChart"></canvas>
+                 <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center">
+                     <h3 class="text-xl font-bold mb-4">Doubling Energy Efficiency Progress by 2030</h3>
+                      <div class="chart-container" style="height: 280px;">
+                        <canvas id="efficiencyGoalChart"></canvas>
                     </div>
-                    <p class="text-sm text-stone-500 mt-4 text-center">After a surge in 2022, progress on energy intensity improvement has slowed to ~1% annually, far below the 4% target needed to meet the goal of doubling efficiency progress by 2030. <i>Source: IEA Energy Efficiency 2023 Report</i></p>
+                     <p class="text-sm text-gray-500 mt-4">The goal to double the annual rate of energy efficiency improvements to <strong class="text-[#20C997]">4%</strong> is falling short, with recent progress slowing to just <strong class="text-[#FD7E14]">1%</strong> per year.</p>
                 </div>
             </div>
+            <!-- End Infographic content for Net Zero -->
 
-            <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200">
+            <!-- Accordion sub-sections for Net Zero -->
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
                 <div class="accordion-item">
                     <div class="accordion-header" data-target="netzero-sub1">
                         <span>1. Renewables Surge: Progress and Potential</span>
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="netzero-sub1">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Past Trend/Status: Unprecedented Growth in Clean Energy</h4>
-                        <p class="text-stone-600 mb-4">The concept of "net zero" has gained significant traction, with over 150 countries and thousands of companies setting net-zero targets. This marks a fundamental transformation of energy and industrial systems. Renewable energy deployment has seen remarkable growth over the past decade, driven by falling costs and supportive policies. Solar PV and wind power are now the cheapest forms of new electricity generation in many parts of the world. Global installed capacity has surged, but the pace of this transition has not been sufficient to align with 1.5°C scenarios. <i>(Source: IEA World Energy Outlook)</i></p>
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Current Commitment vs. Target: Tripling Challenge</h4>
-                        <p class="text-stone-600 mb-4">At COP28, a landmark agreement was reached to triple global renewable energy capacity by 2030. However, the IEA's analysis indicates that current national commitments are falling short. Countries' current plans (NDCs) would only lead to half of the tripling target, highlighting a significant implementation gap. To bridge this, a drastic acceleration in investment and policy support is needed. <i>(Source: IEA Renewables 2023 Report)</i></p>
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Key Actions Needed: Accelerating Renewable Deployment</h4>
-                        <ul class="list-disc list-inside text-stone-600 space-y-2 ml-4">
-                            <li><strong>Streamline Permitting:</strong> Reduce bureaucratic hurdles and accelerate approval processes for renewable energy projects.</li>
-                            <li><strong>Strengthen Grid Infrastructure:</strong> Invest in smart grids, transmission lines, and interconnectors to handle increased renewable electricity.</li>
-                            <li><strong>Expand Financial Incentives:</strong> Provide stable and predictable policy frameworks, including tax credits, grants, and power purchase agreements, to de-risk investments.</li>
-                            <li><strong>Public Acceptance and Engagement:</strong> Foster community engagement and ensure equitable benefits from renewable energy projects.</li>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Past Trend/Status: Unprecedented Growth in Clean Energy</h4>
+                        <p class="text-gray-600 mb-4">The concept of "net zero" has gained significant traction, with over 150 countries and thousands of companies setting net-zero targets. This marks a fundamental transformation of energy and industrial systems. Renewable energy deployment has seen remarkable growth over the past decade, driven by falling costs and supportive policies. Solar PV and wind power are now the cheapest forms of new electricity generation in many parts of the world. Global installed capacity has surged, but the pace of this transition has not been sufficient to align with 1.5°C scenarios. <i>(Source: IEA World Energy Outlook)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Current Commitment vs. Target: Tripling Challenge</h4>
+                        <p class="text-gray-600 mb-4">At COP28, a landmark agreement was reached to triple global renewable energy capacity by 2030. However, the IEA's analysis indicates that current national commitments are falling short. Countries' current plans (NDCs) would only lead to half of the tripling target, highlighting a significant implementation gap. To bridge this, a drastic acceleration in investment and policy support is needed. <i>(Source: IEA Renewables 2023 Report)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Key Actions Needed: Accelerating Renewable Deployment</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
+                            <li><strong class="font-semibold">Streamline Permitting:</strong> Reduce bureaucratic hurdles and accelerate approval processes for renewable energy projects.</li>
+                            <li><strong class="font-semibold">Strengthen Grid Infrastructure:</strong> Invest in smart grids, transmission lines, and interconnectors to handle increased renewable electricity.</li>
+                            <li><strong class="font-semibold">Expand Financial Incentives:</strong> Provide stable and predictable policy frameworks, including tax credits, grants, and power purchase agreements, to de-risk investments.</li>
+                            <li><strong class="font-semibold">Public Acceptance and Engagement:</strong> Foster community engagement and ensure equitable benefits from renewable energy projects.</li>
                         </ul>
                     </div>
                 </div>
@@ -411,16 +497,16 @@
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="netzero-sub2">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Past Trend/Status: The "First Fuel" Slowdown</h4>
-                        <p class="text-stone-600 mb-4">Energy efficiency improvements have been a consistent, albeit varying, trend in many economies, playing a critical role in decoupling economic growth from energy consumption. Efficiency gains often represent the 'first fuel' in energy transitions, offering immediate cost savings and emissions reductions. However, recent years have seen a slowdown in the rate of improvement. While global energy intensity improved by an average of 2% annually between 2010-2019, it dipped to ~1% in 2023-2024, falling far short of the required pace. <i>(Source: IEA Energy Efficiency 2023 Report)</i></p>
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Current Commitment vs. Target: Doubling Challenge</h4>
-                        <p class="text-stone-600 mb-4">At COP28, countries also agreed to double the annual rate of energy efficiency improvements by 2030 (aiming for 4% improvement annually). However, as the "Energy Efficiency: Losing Pace" chart shows, current progress is significantly below this target. This gap underscores a lack of concrete policies and investments to match the stated ambitions, particularly in sectors like buildings and industry. <i>(Source: IEA Energy Efficiency 2023 Report)</i></p>
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Key Actions Needed: Boosting Efficiency Gains</h4>
-                        <ul class="list-disc list-inside text-stone-600 space-y-2 ml-4">
-                            <li><strong>Implement Stricter Standards:</strong> Enforce more stringent building codes, appliance efficiency standards, and vehicle fuel economy regulations.</li>
-                            <li><strong>Promote Industrial Efficiency:</strong> Incentivize adoption of energy-saving technologies and best practices in industrial processes.</li>
-                            <li><strong>Digitalization for Efficiency:</strong> Leverage digital technologies and smart meters to optimize energy consumption in buildings and grids.</li>
-                            <li><strong>Behavioral Change Campaigns:</strong> Educate and encourage consumers and businesses to adopt energy-saving habits.</li>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Past Trend/Status: The "First Fuel" Slowdown</h4>
+                        <p class="text-gray-600 mb-4">Energy efficiency improvements have been a consistent, albeit varying, trend in many economies, playing a critical role in decoupling economic growth from energy consumption. Efficiency gains often represent the 'first fuel' in energy transitions, offering immediate cost savings and emissions reductions. However, recent years have seen a slowdown in the rate of improvement. While global energy intensity improved by an average of 2% annually between 2010-2019, it dipped to ~1% in 2023-2024, falling far short of the required pace. <i>(Source: IEA Energy Efficiency 2023 Report)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Current Commitment vs. Target: Doubling Challenge</h4>
+                        <p class="text-gray-600 mb-4">At COP28, countries also agreed to double the annual rate of energy efficiency improvements by 2030 (aiming for 4% improvement annually). However, as the "Energy Efficiency: Losing Pace" chart shows, current progress is significantly below this target. This gap underscores a lack of concrete policies and investments to match the stated ambitions, particularly in sectors like buildings and industry. <i>(Source: IEA Energy Efficiency 2023 Report)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Key Actions Needed: Boosting Efficiency Gains</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
+                            <li><strong class="font-semibold">Implement Stricter Standards:</strong> Enforce more stringent building codes, appliance efficiency standards, and vehicle fuel economy regulations.</li>
+                            <li><strong class="font-semibold">Promote Industrial Efficiency:</strong> Incentivize adoption of energy-saving technologies and best practices in industrial processes.</li>
+                            <li><strong class="font-semibold">Digitalization for Efficiency:</strong> Leverage digital technologies and smart meters to optimize energy consumption in buildings and grids.</li>
+                            <li><strong class="font-semibold">Behavioral Change Campaigns:</strong> Educate and encourage consumers and businesses to adopt energy-saving habits.</li>
                         </ul>
                     </div>
                 </div>
@@ -431,14 +517,14 @@
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="netzero-sub3">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Key Actions Needed: Coordinated Sectoral Transitions</h4>
-                        <p class="text-stone-600 mb-4">Achieving net zero requires coordinated action across all sectors of the economy, not just the power sector. This involves electrifying transport, heating, and industrial processes where possible, and deploying alternative low-carbon fuels and technologies in hard-to-abate sectors. Integrated planning and cross-sectoral collaboration are crucial to ensure that the decarbonization efforts in one area complement and reinforce those in others, creating a virtuous cycle of emissions reduction. This includes optimizing industrial processes, shifting to sustainable agriculture, and improving waste management practices. <i>(Source: IEA Net Zero by 2050 Report)</i></p>
-                        <ul class="list-disc list-inside text-stone-600 space-y-2 ml-4">
-                            <li><strong>Electrification:</strong> Rapidly electrify end-uses in transport (EVs, public transit), buildings (heat pumps), and suitable industrial processes, ensuring this electricity comes from renewable sources.</li>
-                            <li><strong>Sustainable Fuels:</strong> Develop and scale up sustainable aviation fuels (SAFs), biofuels, and green hydrogen for sectors where direct electrification is challenging.</li>
-                            <li><strong>Circular Economy:</strong> Implement circular economy principles across industries to reduce demand for virgin materials and minimize waste, thus cutting embedded emissions.</li>
-                            <li><strong>Forestry and Land Use:</strong> Enhance carbon sequestration through sustainable forestry, afforestation, and improved land management practices.</li>
-                            <li><strong>Behavioral Change:</strong> Promote sustainable consumption patterns and encourage shifts in consumer behavior to reduce overall energy demand and emissions.</li>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Key Actions Needed: Coordinated Sectoral Transitions</h4>
+                        <p class="text-gray-600 mb-4">Achieving net zero requires coordinated action across all sectors of the economy, not just the power sector. This involves electrifying transport, heating, and industrial processes where possible, and deploying alternative low-carbon fuels and technologies in hard-to-abate sectors. Integrated planning and cross-sectoral collaboration are crucial to ensure that the decarbonization efforts in one area complement and reinforce those in others, creating a virtuous cycle of emissions reduction. This includes optimizing industrial processes, shifting to sustainable agriculture, and improving waste management practices. <i>(Source: IEA Net Zero by 2050 Report)</i></p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
+                            <li><strong class="font-semibold">Electrification:</strong> Rapidly electrify end-uses in transport (EVs, public transit), buildings (heat pumps), and suitable industrial processes, ensuring this electricity comes from renewable sources.</li>
+                            <li><strong class="font-semibold">Sustainable Fuels:</strong> Develop and scale up sustainable aviation fuels (SAFs), biofuels, and green hydrogen for sectors where direct electrification is challenging.</li>
+                            <li><strong class="font-semibold">Circular Economy:</strong> Implement circular economy principles across industries to reduce demand for virgin materials and minimize waste, thus cutting embedded emissions.</li>
+                            <li><strong class="font-semibold">Forestry and Land Use:</strong> Enhance carbon sequestration through sustainable forestry, afforestation, and improved land management practices.</li>
+                            <li><strong class="font-semibold">Behavioral Change:</strong> Promote sustainable consumption patterns and encourage shifts in consumer behavior to reduce overall energy demand and emissions.</li>
                         </ul>
                     </div>
                 </div>
@@ -449,61 +535,89 @@
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="netzero-sub4">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Key Actions Needed: Fostering Breakthroughs and Negative Emissions</h4>
-                        <p class="text-stone-600 mb-4">While existing technologies can achieve a large portion of necessary emissions reductions, innovation is vital for developing breakthrough solutions, especially for the last mile of decarbonization in hard-to-abate sectors and for addressing residual emissions. Carbon Dioxide Removal (CDR) technologies, both natural (e.g., afforestation) and technological (e.g., Direct Air Capture), will be necessary to achieve net-zero targets by offsetting emissions that are currently impossible or prohibitively expensive to eliminate. Investment in R&D and pilot projects for these nascent technologies is critical to bring them to commercial viability. <i>(Source: IEA Energy Technology Perspectives)</i></p>
-                        <ul class="list-disc list-inside text-stone-600 space-y-2 ml-4">
-                            <li><strong>Accelerate R&D:</strong> Significantly increase public and private funding for research and development of next-generation clean technologies across all sectors.</li>
-                            <li><strong>Support Demonstration Projects:</strong> Provide financial and regulatory support for large-scale demonstration and pilot projects to prove commercial viability of emerging solutions.</li>
-                            <li><strong>Carbon Capture, Utilization, and Storage (CCUS):</strong> Invest in and deploy CCUS technologies for industrial processes and power generation where emissions are difficult to abate.</li>
-                            <li><strong>Direct Air Capture (DAC):</strong> Fund and scale up DAC and other engineered carbon removal solutions to achieve negative emissions where necessary.</li>
-                            <li><strong>Natural Climate Solutions:</strong> Protect and restore ecosystems (forests, wetlands, oceans) to enhance natural carbon sinks and build climate resilience.</li>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Key Actions Needed: Fostering Breakthroughs and Negative Emissions</h4>
+                        <p class="text-gray-600 mb-4">While existing technologies can achieve a large portion of necessary emissions reductions, innovation is vital for developing breakthrough solutions, especially for the last mile of decarbonization in hard-to-abate sectors and for addressing residual emissions. Carbon Dioxide Removal (CDR) technologies, both natural (e.g., afforestation) and technological (e.g., Direct Air Capture), will be necessary to achieve net-zero targets by offsetting emissions that are currently impossible or prohibitively expensive to eliminate. Investment in R&D and pilot projects for these nascent technologies is critical to bring them to commercial viability. <i>(Source: IEA Energy Technology Perspectives)</i></p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
+                            <li><strong class="font-semibold">Accelerate R&D:</strong> Significantly increase public and private funding for research and development of next-generation clean technologies across all sectors.</li>
+                            <li><strong class="font-semibold">Support Demonstration Projects:</strong> Provide financial and regulatory support for large-scale demonstration and pilot projects to prove commercial viability of emerging solutions.</li>
+                            <li><strong class="font-semibold">Carbon Capture, Utilization, and Storage (CCUS):</strong> Invest in and deploy CCUS technologies for industrial processes and power generation where emissions are difficult to abate.</li>
+                            <li><strong class="font-semibold">Direct Air Capture (DAC):</strong> Fund and scale up DAC and other engineered carbon removal solutions to achieve negative emissions where necessary.</li>
+                            <li><strong class="font-semibold">Natural Climate Solutions:</strong> Protect and restore ecosystems (forests, wetlands, oceans) to enhance natural carbon sinks and build climate resilience.</li>
                         </ul>
                     </div>
                 </div>
             </div>
+            <!-- End Accordion sub-sections for Net Zero -->
         </section>
-
+        
+        <!-- Corporate Footprint & Scope 3 Section -->
         <section id="scope3" class="content-section">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-stone-900">Scope 3: The Value Chain Challenge</h2>
-                <p class="mt-4 max-w-3xl mx-auto text-stone-600">For most companies, the largest source of emissions lies not in their direct operations, but across their entire value chain—from suppliers to customers. These "Scope 3" emissions are critical to address but incredibly complex to measure and manage. This section explores their significance and the key challenges companies face.</p>
+                <h2 class="section-title text-center mb-12">The Corporate Footprint: Tackling the Value Chain</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-gray-600">For most companies, the largest source of emissions lies not in their direct operations, but across their entire value chain—from suppliers to customers. These "Scope 3" emissions are critical to address but incredibly complex to measure and manage. This section explores their significance and the key challenges companies face.</p>
             </div>
             
-            <div class="grid lg:grid-cols-2 gap-8 items-center mb-8">
-                 <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200">
-                    <h3 class="text-xl font-semibold text-center mb-4">The Dominance of Scope 3 Emissions (GHG Protocol)</h3>
-                    <div class="chart-container">
+            <!-- Infographic content for Scope 3 -->
+            <div class="grid lg:grid-cols-5 gap-8 items-center mb-8">
+                <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-lg border border-gray-200 text-center">
+                    <h3 class="text-xl font-bold mb-4">Scope 3: The Dominant Emission Source</h3>
+                    <div class="chart-container" style="height: 280px;">
                         <canvas id="scope3Chart"></canvas>
                     </div>
-                    <p class="text-sm text-stone-500 mt-4 text-center">Scope 3 emissions often account for over 90% of a company's total carbon footprint, making value chain decarbonization essential for credible net-zero strategies. <i>Source: GHG Protocol</i></p>
+                    <p class="text-sm text-gray-500 mt-4">For most companies, indirect Scope 3 emissions from their value chain represent the vast majority of their carbon footprint, yet <strong class="text-[#FD7E14]">less than 10%</strong> of companies measure them accurately.</p>
                 </div>
-                <div>
-                    <div class="space-y-4">
-                        <div class="bg-white p-4 rounded-lg shadow-md border border-stone-200">
-                            <h4 class="font-semibold text-[#0F766E]">Data Complexity</h4> <!-- Updated green -->
-                            <p class="text-stone-600 text-sm">Gathering accurate data from thousands of suppliers is a primary hurdle. Many suppliers don't measure their own emissions, leading to reliance on inaccurate industry averages.</p>
+                <div class="lg:col-span-3 bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                     <h3 class="text-xl font-bold text-center mb-4">Regulatory Divergence on Scope 3</h3>
+                     <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b-2 border-gray-200">
+                                <th class="p-2 font-semibold">Jurisdiction</th>
+                                <th class="p-2 font-semibold">Scope 3 Requirement</th>
+                                <th class="p-2 font-semibold">Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-100">
+                                <td class="p-2 font-bold text-[#0D6EFD]">EU (CSRD)</td>
+                                <td class="p-2 text-green-600 font-semibold">Mandatory</td>
+                                <td class="p-2 text-sm text-gray-600">Applies to ~50,000 EU and non-EU companies with significant EU turnover, driving global transparency.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 font-bold text-[#FD7E14]">US (SEC Rule)</td>
+                                <td class="p-2 text-red-600 font-semibold">Removed</td>
+                                <td class="p-2 text-sm text-gray-600">Final rule removed the requirement, creating a reporting gap, though market and state-level pressures persist.</td>
+                            </tr>
+                        </tbody>
+                     </table>
+                     <!-- Added back the Data Complexity, Lack of Control, and Regulatory Divergence cards -->
+                     <div class="space-y-4 mt-6">
+                        <div class="bg-gray-100 p-4 rounded-lg shadow-sm border border-gray-200">
+                            <h4 class="font-semibold text-gray-800">Data Complexity</h4>
+                            <p class="text-gray-600 text-sm">Gathering accurate data from thousands of suppliers is a primary hurdle. Many suppliers don't measure their own emissions, leading to reliance on inaccurate industry averages.</p>
                         </div>
-                        <div class="bg-white p-4 rounded-lg shadow-md border border-stone-200">
-                             <h4 class="font-semibold text-[#0F766E]">Lack of Control</h4> <!-- Updated green -->
-                            <p class="text-stone-600 text-sm">Companies are accountable for emissions from sources they don't own or directly control, requiring new strategies based on influence, collaboration, and procurement policies.</p>
+                        <div class="bg-gray-100 p-4 rounded-lg shadow-sm border border-gray-200">
+                            <h4 class="font-semibold text-gray-800">Lack of Control</h4>
+                            <p class="text-gray-600 text-sm">Companies are accountable for emissions from sources they don't own or directly control, requiring new strategies based on influence, collaboration, and procurement policies.</p>
                         </div>
-                         <div class="bg-white p-4 rounded-lg shadow-md border border-stone-200">
-                             <h4 class="font-semibold text-[#0F766E]">Regulatory Divergence</h4> <!-- Updated green -->
-                            <p class="text-stone-600 text-sm">The EU's CSRD mandates Scope 3 reporting, while the US SEC has backed away, creating a complex and fragmented compliance landscape for global companies.</p>
+                        <div class="bg-gray-100 p-4 rounded-lg shadow-sm border border-gray-200">
+                            <h4 class="font-semibold text-gray-800">Regulatory Divergence</h4>
+                            <p class="text-gray-600 text-sm">The EU's CSRD mandates Scope 3 reporting, while the US SEC has backed away, creating a complex and fragmented compliance landscape for global companies.</p>
                         </div>
-                    </div>
+                     </div>
                 </div>
             </div>
+            <!-- End Infographic content for Scope 3 -->
 
-            <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200">
+            <!-- Accordion sub-sections for Scope 3 -->
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
                 <div class="accordion-item">
                     <div class="accordion-header" data-target="scope3-sub1">
                         <span>1. Understanding the Value Chain Footprint</span>
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="scope3-sub1">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Past Trend/Status: The Evolution of Scope 3 Awareness</h4>
-                        <p class="text-stone-600 mb-4">The concept of Scope 3 emissions gained prominence with the introduction of the GHG Protocol in 2001, providing a standardized framework for corporate greenhouse gas accounting. Before this, most companies focused primarily on Scope 1 (direct) and Scope 2 (purchased electricity) emissions. Over the past decade, awareness has grown significantly, recognizing that for many sectors—especially consumer goods, automotive, and tech—Scope 3 emissions represent the vast majority (often 70-95%) of their total carbon footprint. This has led to an increasing number of companies setting Scope 3 reduction targets as they realize the full extent of their climate impact. <i>(Source: GHG Protocol)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Past Trend/Status: The Evolution of Scope 3 Awareness</h4>
+                        <p class="text-gray-600 mb-4">The concept of Scope 3 emissions gained prominence with the introduction of the GHG Protocol in 2001, providing a standardized framework for corporate greenhouse gas accounting. Before this, most companies focused primarily on Scope 1 (direct) and Scope 2 (purchased electricity) emissions. Over the past decade, awareness has grown significantly, recognizing that for many sectors—especially consumer goods, automotive, and tech—Scope 3 emissions represent the vast majority (often 70-95%) of their total carbon footprint. This has led to an increasing number of companies setting Scope 3 reduction targets as they realize the full extent of their climate impact. <i>(Source: GHG Protocol)</i></p>
                     </div>
                 </div>
 
@@ -513,8 +627,8 @@
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="scope3-sub2">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Current Challenges: Data Granularity and Control</h4>
-                        <p class="text-stone-600 mb-4">Measuring Scope 3 emissions is inherently complex due to the sheer number of sources and actors involved in a company's value chain (e.g., purchased goods, business travel, waste generated, use of sold products). Data quality is a primary hurdle, as many suppliers, especially SMEs, lack the capacity or resources to accurately measure and report their own emissions. This often leads companies to rely on less precise industry averages or to spend significant resources on data collection and verification. The lack of direct operational control over these emissions further complicates reduction efforts, requiring new strategies focused on influence and collaboration rather than direct command. <i>(Source: World Business Council for Sustainable Development)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Current Challenges: Data Granularity and Control</h4>
+                        <p class="text-gray-600 mb-4">Measuring Scope 3 emissions is inherently complex due to the sheer number of sources and actors involved in a company's value chain (e.g., purchased goods, business travel, waste generated, use of sold products). Data quality is a primary hurdle, as many suppliers, especially SMEs, lack the capacity or resources to accurately measure and report their own emissions. This often leads companies to rely on less precise industry averages or to spend significant resources on data collection and verification. The lack of direct operational control over these emissions further complicates reduction efforts, requiring new strategies focused on influence and collaboration rather than direct command. <i>(Source: World Business Council for Sustainable Development)</i></p>
                     </div>
                 </div>
 
@@ -524,9 +638,9 @@
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="scope3-sub3">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Key Actions Needed: Collaborative Decarbonization Across the Value Chain</h4>
-                        <p class="text-stone-600 mb-4">Given that a significant portion of Scope 3 emissions originates from the supply chain, effective supplier engagement is paramount. This involves not just demanding emissions data, but actively collaborating with suppliers to help them decarbonize. Companies can offer technical assistance, share best practices, provide access to financing for green upgrades, or integrate sustainability criteria into procurement decisions. Building long-term partnerships focused on shared climate goals is more effective than punitive measures alone, fostering a collective transition. <i>(Source: CDP Supply Chain Report)</i></p>
-                        <ul class="list-disc list-inside text-stone-600 space-y-2 ml-4">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Key Actions Needed: Collaborative Decarbonization Across the Value Chain</h4>
+                        <p class="text-gray-600 mb-4">Given that a significant portion of Scope 3 emissions originates from the supply chain, effective supplier engagement is paramount. This involves not just demanding emissions data, but actively collaborating with suppliers to help them decarbonize. Companies can offer technical assistance, share best practices, provide access to financing for green upgrades, or integrate sustainability criteria into procurement decisions. Building long-term partnerships focused on shared climate goals is more effective than punitive measures alone, fostering a collective transition. <i>(Source: CDP Supply Chain Report)</i></p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
                             <li><strong class="font-semibold">Collaborative Capacity Building:</strong> Offer training, tools, and technical support to suppliers to improve their emissions measurement and reduction capabilities.</li>
                             <li><strong class="font-semibold">Incentivize Decarbonization:</strong> Provide financial incentives, preferential contracts, or joint venture opportunities for suppliers who commit to and achieve emissions reductions.</li>
                             <li><strong class="font-semibold">Set Clear Expectations:</strong> Communicate transparent Scope 3 reduction targets and performance expectations to all relevant suppliers.</li>
@@ -542,51 +656,79 @@
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="scope3-sub4">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Current Commitment vs. Target: Navigating Diverse Regulatory Frameworks</h4>
-                        <p class="text-stone-600 mb-4">The regulatory landscape for Scope 3 emissions reporting is rapidly evolving and becoming increasingly fragmented. The EU's Corporate Sustainability Reporting Directive (CSRD) mandates comprehensive Scope 3 reporting for a wide range of companies, pushing for greater transparency and accountability. In contrast, the US Securities and Exchange Commission (SEC) has scaled back its proposed Scope 3 reporting requirements, creating divergence. This creates compliance complexities for multinational corporations, emphasizing the need for robust internal systems capable of adapting to varied requirements and demonstrating credible progress. The lack of harmonized global regulations and reliable primary data from suppliers often means commitments are aspirational rather than guaranteed. <i>(Source: European Commission, SEC)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Current Commitment vs. Target: Navigating Diverse Regulatory Frameworks</h4>
+                        <p class="text-gray-600 mb-4">The regulatory landscape for Scope 3 emissions reporting is rapidly evolving and becoming increasingly fragmented. The EU's Corporate Sustainability Reporting Directive (CSRD) mandates comprehensive Scope 3 reporting for a wide range of companies, pushing for greater transparency and accountability. In contrast, the US Securities and Exchange Commission (SEC) has scaled back its proposed Scope 3 reporting requirements, creating divergence. This creates compliance complexities for multinational corporations, emphasizing the need for robust internal systems capable of adapting to varied requirements and demonstrating credible progress. The lack of harmonized global regulations and reliable primary data from suppliers often means commitments are aspirational rather than guaranteed. <i>(Source: European Commission, SEC)</i></p>
                     </div>
                 </div>
             </div>
+            <!-- End Accordion sub-sections for Scope 3 -->
         </section>
 
+        <!-- Energy Transition Technologies Section -->
         <section id="tech" class="content-section">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-stone-900">Energy Transition Technologies</h2>
-                <p class="mt-4 max-w-3xl mx-auto text-stone-600">The energy transition is powered by a suite of innovative technologies. From established renewables like solar and wind to emerging solutions like green hydrogen, each plays a role but faces unique challenges in cost, scale, and integration. This section provides a comparative look at the key technologies needed to decarbonize our world.</p>
+                <h2 class="section-title text-center mb-12">Technology's Role: Enablers and Hurdles</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-gray-600">The energy transition is powered by a suite of innovative technologies. From established renewables like solar and wind to emerging solutions like green hydrogen, each plays a role but faces unique challenges in cost, scale, and integration. This section provides a comparative look at the key technologies needed to decarbonize our world.</p>
             </div>
             
-            <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200 mb-8">
-                <div class="flex justify-center mb-6 border-b border-stone-200">
-                    <button class="tech-button py-2 px-4 text-sm font-semibold border-b-2 border-[#0A5B4C] text-[#0A5B4C]" data-tech="hydrogen">Green Hydrogen</button> <!-- Updated green -->
-                    <button class="tech-button py-2 px-4 text-sm font-semibold border-b-2 border-transparent text-stone-500" data-tech="steel">Green Steel</button>
-                    <button class="tech-button py-2 px-4 text-sm font-semibold border-b-2 border-transparent text-stone-500" data-tech="storage">Energy Storage</button>
-                </div>
-                <div id="tech-content-area" class="grid lg:grid-cols-2 gap-8 items-center">
-                    <!-- Initial content for hydrogen to prevent TypeErrors on load -->
-                    <div class="text-left">
-                        <h3 class="text-xl font-semibold mb-2">Green Hydrogen: Cost Challenge (IEA Analysis)</h3>
-                        <p class="text-stone-600">Green hydrogen is critical for decarbonizing heavy industry but remains expensive. The target price for competitiveness is $2-3/kg, but current costs are significantly higher without subsidies, primarily driven by the cost of renewable electricity and electrolyzers. <i>Source: IEA Hydrogen Report</i></p>
-                    </div>
+            <!-- Infographic content for Technology -->
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-center mb-4">The "Green Premium": Cost of Clean Tech</h3>
                     <div class="chart-container">
-                        <canvas id="techChart"></canvas>
+                        <canvas id="greenPremiumChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-4 text-center">A key barrier to decarbonizing heavy industry is cost. Green steel is up to <strong class="text-[#FD7E14]">40%</strong> more expensive, and green hydrogen costs are <strong class="text-[#FD7E14]">2-4 times</strong> higher than fossil-based alternatives.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                    <h3 class="text-xl font-bold text-center mb-4">Energy Storage: The Grid's Critical Partner</h3>
+                    <div class="chart-container">
+                        <canvas id="bessCostChart"></canvas>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-4 text-center">While battery storage costs have plummeted by <strong class="text-[#20C997]">89%</strong> since 2010, deployment is not keeping pace with renewable growth, creating grid bottlenecks and wasted energy.</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 mb-8">
+                <h3 class="text-xl font-bold text-center mb-6">The Systemic Challenge: From Generation to Grid</h3>
+                <div class="flow-diagram-container">
+                    <div class="flow-diagram-item bg-blue-100 text-blue-800">
+                        <h4 class="font-bold">Rapid Renewable Growth</h4>
+                        <p class="text-sm">Solar & Wind are now cost-effective</p>
+                    </div>
+                    <div class="flow-arrow">&#10140;</div>
+                    <div class="flow-diagram-item bg-orange-100 text-orange-800">
+                        <h4 class="font-bold">Grid Bottlenecks</h4>
+                        <p class="text-sm">Outdated infrastructure cannot keep up</p>
+                    </div>
+                    <div class="flow-arrow">&#10140;</div>
+                    <div class="flow-diagram-item bg-red-100 text-red-800">
+                        <h4 class="font-bold">Energy Curtailment</h4>
+                        <p class="text-sm">Up to 10% of clean energy is wasted</p>
+                    </div>
+                    <div class="flow-arrow">&#10140;</div>
+                    <div class="flow-diagram-item bg-teal-100 text-teal-800">
+                        <h4 class="font-bold">The Solution: Storage</h4>
+                        <p class="text-sm">Massive investment in storage is required</p>
                     </div>
                 </div>
             </div>
+            <!-- End Infographic content for Technology -->
 
-            <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200">
+            <!-- Accordion sub-sections for Technology -->
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
                 <div class="accordion-item">
                     <div class="accordion-header" data-target="tech-sub1">
                         <span>1. Renewable Energy Technologies: State of Play</span>
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="tech-sub1">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Past Trend/Status: The Renewable Revolution</h4>
-                        <p class="text-stone-600 mb-4">The past two decades have witnessed an extraordinary transformation in the energy landscape, primarily driven by the rapid scaling and cost reduction of renewable energy technologies. Solar PV and wind power, once niche solutions, are now the cheapest forms of new electricity generation in many parts of the world. Global installed capacity has surged, with solar and wind leading the way, but the pace needs to accelerate dramatically to meet climate targets. Hydropower remains a significant renewable source, while geothermal and bioenergy also contribute to the clean energy mix. <i>(Source: IEA Renewables 2023 Report)</i></p>
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Current Commitment vs. Target: Tripling Challenge for Renewables</h4>
-                        <p class="text-stone-600 mb-4">At COP28, a landmark agreement was reached to triple global renewable energy capacity by 2030. However, the IEA's analysis indicates that current national commitments are falling short. Countries' current plans (NDCs) would only lead to half of the tripling target. This gap highlights the urgent need for more robust policy frameworks, faster permitting, and greater investment to unlock the full potential of renewables. <i>(Source: IEA Renewables 2023 Report)</i></p>
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Key Actions Needed: Accelerating Deployment</h4>
-                        <ul class="list-disc list-inside text-stone-600 space-y-2 ml-4">
-                            <li><strong class="font-semibold">Policy Certainty & Incentives:</strong> Implement stable, long-term policies and financial incentives that de-risk renewable energy projects for investors.</li>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Past Trend/Status: The Renewable Revolution</h4>
+                        <p class="text-gray-600 mb-4">The past two decades have witnessed an extraordinary transformation in the energy landscape, primarily driven by the rapid scaling and cost reduction of renewable energy technologies. Solar PV and wind power, once niche solutions, are now the cheapest forms of new electricity generation in many parts of the world. Global installed capacity has surged, with solar and wind leading the way, but the pace needs to accelerate dramatically to meet climate targets. Hydropower remains a significant renewable source, while geothermal and bioenergy also contribute to the clean energy mix. <i>(Source: IEA Renewables 2023 Report)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Current Commitment vs. Target: Tripling Challenge for Renewables</h4>
+                        <p class="text-gray-600 mb-4">At COP28, a landmark agreement was reached to triple global renewable energy capacity by 2030. However, the IEA's analysis indicates that current national commitments are falling short. Countries' current plans (NDCs) would only lead to half of the tripling target. This gap highlights the urgent need for more robust policy frameworks, faster permitting, and greater investment to unlock the full potential of renewables. <i>(Source: IEA Renewables 2023 Report)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Key Actions Needed: Accelerating Deployment</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
+                            <li><strong class="font-semibold">Policy Certainty & Incentives:</strong> Implement stable and long-term policies and financial incentives that de-risk renewable energy projects for investors.</li>
                             <li><strong class="font-semibold">Grid Modernization:</strong> Invest heavily in upgrading and expanding grid infrastructure to accommodate higher shares of variable renewable energy.</li>
                             <li><strong class="font-semibold">Streamlined Permitting:</strong> Reduce administrative burdens and accelerate the permitting process for renewable energy installations.</li>
                             <li><strong class="font-semibold">Supply Chain Diversification:</strong> Build resilient supply chains for renewable energy components to avoid bottlenecks.</li>
@@ -600,12 +742,12 @@
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="tech-sub2">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Past Trend/Status: Falling Costs, Rising Importance</h4>
-                        <p class="text-stone-600 mb-4">Energy storage is crucial for integrating variable renewable energy sources like solar and wind into the grid, ensuring stability and reliability. Battery storage costs have plummeted dramatically over the past decade, enabling greater grid flexibility and the proliferation of utility-scale and behind-the-meter systems. While pumped hydro has historically dominated storage, lithium-ion batteries are now leading growth. However, deployment is still not fast enough to match the rapid expansion of renewables. <i>(Source: IEA Energy Storage Report)</i></p>
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Current Commitment vs. Target: The Six-Fold Increase Challenge</h4>
-                        <p class="text-stone-600 mb-4">The COP29 pledge (proposed) calls for a six-fold increase in global energy storage capacity by 2030 (from 250 GW in 2022 to 1500 GW) to support a grid dominated by renewables. Current projections, however, fall short of this ambitious target. This gap highlights the need for accelerated deployment and investment in diverse storage technologies, including long-duration solutions, to ensure grid stability and resilience as fossil fuels are phased out. <i>(Source: IEA Energy Storage Report)</i></p>
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Key Actions Needed: Scaling Up Storage</h4>
-                        <ul class="list-disc list-inside text-stone-600 space-y-2 ml-4">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Past Trend/Status: Falling Costs, Rising Importance</h4>
+                        <p class="text-gray-600 mb-4">Energy storage is crucial for integrating variable renewable energy sources like solar and wind into the grid, ensuring stability and reliability. Battery storage costs have plummeted dramatically over the past decade, enabling greater grid flexibility and the proliferation of utility-scale and behind-the-meter systems. While pumped hydro has historically dominated storage, lithium-ion batteries are now leading growth. However, deployment is still not fast enough to match the rapid expansion of renewables. <i>(Source: IEA Energy Storage Report)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Current Commitment vs. Target: The Six-Fold Increase Challenge</h4>
+                        <p class="text-gray-600 mb-4">The COP29 pledge (proposed) calls for a six-fold increase in global energy storage capacity by 2030 (from 250 GW in 2022 to 1500 GW) to support a grid dominated by renewables. Current projections, however, fall short of this ambitious target. This gap highlights the need for accelerated deployment and investment in diverse storage technologies, including long-duration solutions, to ensure grid stability and resilience as fossil fuels are phased out. <i>(Source: IEA Energy Storage Report)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Key Actions Needed: Scaling Up Storage</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
                             <li><strong class="font-semibold">Policy Support & Market Design:</strong> Implement market mechanisms that properly value the flexibility and reliability services provided by energy storage.</li>
                             <li><strong class="font-semibold">R&D for Long Duration Storage:</strong> Invest in research and development for longer-duration storage technologies beyond lithium-ion, such as flow batteries, compressed air, or thermal storage.</li>
                             <li><strong class="font-semibold">Pilot Projects:</strong> Support demonstration projects to prove the commercial viability and operational effectiveness of new storage solutions.</li>
@@ -620,12 +762,12 @@
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="tech-sub3">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Past Trend/Status: Emerging but Costly</h4>
-                        <p class="text-stone-600 mb-4">Green hydrogen, produced by electrolyzing water with renewable electricity, is critical for decarbonizing hard-to-abate sectors like heavy industry, shipping, and aviation where direct electrification is challenging. While promising, it remains significantly more expensive than fossil fuel-based hydrogen ('grey' hydrogen). Historically, hydrogen production has been dominated by fossil fuels, but growing climate urgency has spurred interest and pilot projects for green hydrogen. The target price for competitiveness is $2-3/kg, but current costs are much higher without subsidies, primarily driven by the cost of renewable electricity and electrolyzers. <i>(Source: IEA Hydrogen Report)</i></p>
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Current Commitment vs. Target: Gigawatt-Scale Ambitions, Limited Progress</h4>
-                        <p class="text-stone-600 mb-4">Numerous countries and corporations have set ambitious targets for green hydrogen production and use, aiming for gigawatt-scale electrolysis capacity by 2030. However, current deployment rates for green hydrogen are far behind the pace needed to meet net-zero targets. The gap is primarily due to high production costs, insufficient renewable electricity supply, and a lack of developed infrastructure for transport and storage. Significant policy support and technological advancements are needed to bring down costs and scale up production to align with these targets. <i>(Source: Hydrogen Council, IEA)</i></p>
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Key Actions Needed: Accelerating Green Hydrogen</h4>
-                        <ul class="list-disc list-inside text-stone-600 space-y-2 ml-4">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Past Trend/Status: Emerging but Costly</h4>
+                        <p class="text-gray-600 mb-4">Green hydrogen, produced by electrolyzing water with renewable electricity, is critical for decarbonizing hard-to-abate sectors like heavy industry, shipping, and aviation where direct electrification is challenging. While promising, it remains significantly more expensive than fossil fuel-based hydrogen ('grey' hydrogen). Historically, hydrogen production has been dominated by fossil fuels, but growing climate urgency has spurred interest and pilot projects for green hydrogen. The target price for competitiveness is $2-3/kg, but current costs are much higher without subsidies, primarily driven by the cost of renewable electricity and electrolyzers. <i>(Source: IEA Hydrogen Report)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Current Commitment vs. Target: Gigawatt-Scale Ambitions, Limited Progress</h4>
+                        <p class="text-gray-600 mb-4">Numerous countries and corporations have set ambitious targets for green hydrogen production and use, aiming for gigawatt-scale electrolysis capacity by 2030. However, current deployment rates for green hydrogen are far behind the pace needed to meet net-zero targets. The gap is primarily due to high production costs, insufficient renewable electricity supply, and a lack of developed infrastructure for transport and storage. Significant policy support and technological advancements are needed to bring down costs and scale up production to align with these targets. <i>(Source: Hydrogen Council, IEA)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Key Actions Needed: Accelerating Green Hydrogen</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
                             <li><strong class="font-semibold">Demand Creation & Offtake Agreements:</strong> Implement policies that create a clear demand signal for green hydrogen in key industrial and transport sectors.</li>
                             <li><strong class="font-semibold">Cost Reduction Initiatives:</strong> Invest in R&D to improve electrolyzer efficiency and durability, and reduce the cost of renewable electricity.</li>
                             <li><strong class="font-semibold">Infrastructure Development:</strong> Build out hydrogen pipelines, storage facilities, and refueling infrastructure.</li>
@@ -640,12 +782,12 @@
                         <span>&#9660;</span>
                     </div>
                     <div class="accordion-content" id="tech-sub4">
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Past Trend/Status: A Hard-to-Abate Sector</h4>
-                        <p class="text-stone-600 mb-4">Decarbonizing heavy industries like steel, cement, and chemicals is one of the toughest challenges in the energy transition due to their high process emissions and energy intensity. Historically, these sectors have relied heavily on fossil fuels for both heat and feedstock. Technologies like hydrogen-based direct reduced iron (H2-DRI) for steel, carbon capture and storage (CCS) for cement, and electrification of chemical processes are vital, but have only recently started to gain traction beyond pilot stages. <i>(Source: IEA Industrial Decarbonization Report)</i></p>
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Current Commitment vs. Target: High Cost, Limited Adoption</h4>
-                        <p class="text-stone-600 mb-4">While many industrial companies have set decarbonization targets, the adoption of "green" alternatives (like green steel) is hampered by significant cost premiums over traditional methods. These technologies require substantial upfront capital investment and often face operational challenges in scaling. Current commitments for industrial decarbonization often rely on future technological breakthroughs or significant policy support that is not yet fully in place, creating a gap between ambition and the pace of actual transformation. <i>(Source: IEA Industrial Decarbonization Report)</i></p>
-                        <h4 class="text-xl font-semibold text-stone-900 mb-3">Key Actions Needed: Driving Industrial Transformation</h4>
-                        <ul class="list-disc list-inside text-stone-600 space-y-2 ml-4">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Past Trend/Status: A Hard-to-Abate Sector</h4>
+                        <p class="text-gray-600 mb-4">Decarbonizing heavy industries like steel, cement, and chemicals is one of the toughest challenges in the energy transition due to their high process emissions and energy intensity. Historically, these sectors have relied heavily on fossil fuels for both heat and feedstock. Technologies like hydrogen-based direct reduced iron (H2-DRI) for steel, carbon capture and storage (CCS) for cement, and electrification of chemical processes are vital, but have only recently started to gain traction beyond pilot stages. <i>(Source: IEA Industrial Decarbonization Report)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Current Commitment vs. Target: High Cost, Limited Adoption</h4>
+                        <p class="text-gray-600 mb-4">While many industrial companies have set decarbonization targets, the adoption of "green" alternatives (like green steel) is hampered by significant cost premiums over traditional methods. These technologies require substantial upfront capital investment and often face operational challenges in scaling. Current commitments for industrial decarbonization often rely on future technological breakthroughs or significant policy support that is not yet fully in place, creating a gap between ambition and the pace of actual transformation. <i>(Source: IEA Industrial Decarbonization Report)</i></p>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Key Actions Needed: Driving Industrial Transformation</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2 ml-4">
                             <li><strong class="font-semibold">Policy & Regulatory Support:</strong> Implement targeted policies, such as carbon contracts for difference or green product standards, to reduce the cost premium of low-carbon industrial products.</li>
                             <li><strong class="font-semibold">Industrial Clusters:</strong> Foster the development of industrial clusters where shared infrastructure (e.g., hydrogen pipelines, CCS networks) can reduce costs and facilitate decarbonization.</li>
                             <li><strong class="font-semibold">Public-Private Partnerships:</strong> Encourage collaboration between governments and industry to co-finance and de-risk large-scale decarbonization projects.</li>
@@ -654,53 +796,55 @@
                     </div>
                 </div>
             </div>
+            <!-- End Accordion sub-sections for Technology -->
         </section>
 
+        <!-- About Me Section -->
         <section id="about" class="content-section">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-stone-900">My Journey in Climate & Energy</h2>
-                <p class="mt-4 max-w-3xl mx-auto text-stone-600">
+                <h2 class="section-title text-gray-900">My Journey in Climate & Energy</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-gray-600">
                     A passionate advocate for a sustainable future, my career has been a dynamic journey through the heart of climate action and energy innovation. I thrive at the intersection of technical insight and strategic impact, always seeking to translate complex challenges into actionable solutions for a greener world.
                 </p>
             </div>
-            <div class="bg-white p-8 rounded-xl shadow-lg border border-stone-200">
-                <h3 class="text-2xl font-semibold text-stone-900 mb-4">My Professional Expedition</h3>
-                <p class="text-stone-600 mb-6">
+            <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-4">My Professional Expedition</h3>
+                <p class="text-gray-600 mb-6">
                     My expedition began in the operational depths of heavy industry at <strong class="font-semibold">HPCL Mittal Energy Limited</strong>, where for five years, I was at the forefront of environmental responsibility. Here, I didn't just manage; I engineered change, optimizing processes to slash hazardous air emissions by 25% and recovering 23% of heat loss, significantly shrinking the corporate carbon footprint. Leading multi-disciplinary teams, I championed operational efficiency and maintained impeccable environmental management standards, even steering a major plant turnaround to completion ahead of schedule. This foundation ingrained in me the practicalities of industrial decarbonization and the power of meticulous project execution.
                 </p>
-                <p class="text-stone-600 mb-6">
+                <p class="text-gray-600 mb-6">
                     Transitioning to the strategic frontier, I embarked on a pivotal role as a Product Management Intern at <strong class="font-semibold">ClimateCamp</strong>. This is where I dove deep into the intricacies of climate policy, dissecting CSRD regulations and GHG Protocol standards to construct carbon footprint frameworks. I orchestrated ISO 46001 certification initiatives for B2B clients, bridging the gap between evolving climate requirements and corporate compliance. My focus was on fostering client satisfaction and securing sustained investment by prioritizing impactful sustainability solutions, ultimately boosting product adoption and delivery efficiency.
                 </p>
-                <p class="text-stone-600 mb-6">
+                <p class="text-gray-600 mb-6">
                     Parallel to this, as a Student Consultant with <strong class="font-semibold">Equans</strong>, I spearheaded critical market analysis on Battery Energy Storage Systems (BESS) and crafted strategic recommendations for "Second Life Battery" adoption in industrial applications. This involved a deep dive into the UK energy sector's regulatory landscape and extensive engagement with industry stakeholders to overcome adoption barriers, contributing directly to sustainable circular economy models. My work here was about synthesizing complex technical and commercial insights into actionable climate resilience strategies, shaping transition roadmaps for the sector.
                 </p>
 
-                <h3 class="text-2xl font-semibold text-stone-900 mt-8 mb-6 text-center">My Core Capabilities</h3>
+                <h3 class="text-2xl font-semibold text-gray-900 mt-8 mb-6 text-center">My Core Capabilities</h3>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="skill-card" data-skill="carbon">
                         <span class="skill-icon">🌿</span>
-                        <h4 class="font-semibold text-stone-900 text-lg">Carbon Management</h4>
+                        <h4 class="font-semibold text-gray-900 text-lg">Carbon Management</h4>
                         <div class="skill-description">
                             <p>I designed and implemented engineering optimizations at a major industrial plant, achieving a 25% reduction in hazardous air emissions and significantly cutting the corporate carbon footprint, ensuring ISO 14001 compliance.</p>
                         </div>
                     </div>
                     <div class="skill-card" data-skill="esg">
                         <span class="skill-icon">📊</span>
-                        <h4 class="font-semibold text-stone-900 text-lg">ESG & Sustainability</h4>
+                        <h4 class="font-semibold text-gray-900 text-lg">ESG & Sustainability</h4>
                         <div class="skill-description">
                             <p>At ClimateCamp, I developed product carbon footprint frameworks aligned with CSRD and GHG Protocol, and led ISO 46001 certification, driving organizational compliance and transparent ESG reporting for B2B clients.</p>
                         </div>
                     </div>
                     <div class="skill-card" data-skill="project">
                         <span class="skill-icon">🚀</span>
-                        <h4 class="font-semibold text-stone-900 text-lg">Project Management</h4>
+                        <h4 class="font-semibold text-gray-900 text-lg">Project Management</h4>
                         <div class="skill-description">
                             <p>I successfully managed multi-disciplinary teams of 35+ and a major Plant Turnaround, completing projects ahead of schedule, enhancing operational efficiency by 30%, and ensuring zero lost time accidents.</p>
                         </div>
                     </div>
                     <div class="skill-card" data-skill="policy">
                         <span class="skill-icon">📜</span>
-                        <h4 class="font-semibold text-stone-900 text-lg">Strategic Policy & Analysis</h4>
+                        <h4 class="font-semibold text-gray-900 text-lg">Strategic Policy & Analysis</h4>
                         <div class="skill-description">
                             <p>For Equans, I conducted comprehensive market analysis on BESS decarbonization pathways and developed evidence-based policy recommendations for Second Life Battery adoption, engaging extensively with industry stakeholders.</p>
                         </div>
@@ -714,13 +858,13 @@
     <div id="policyExplainerModal" class="modal">
         <div class="modal-content">
             <span class="close-button" id="closePolicyExplainer">&times;</span>
-            <h3 class="text-2xl font-bold mb-4 text-stone-900">✨ Explain Climate Policy Term</h3>
-            <input type="text" id="policyTermInput" placeholder="e.g., NDC, Carbon Pricing, Net Zero" class="w-full p-3 border border-stone-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0A5B4C] mb-4"> <!-- Updated green -->
-            <button id="getPolicyExplanation" class="bg-[#0A5B4C] hover:bg-[#064e3b] text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 w-full"> <!-- Updated green -->
+            <h3 class="text-2xl font-bold mb-4 text-gray-900">✨ Explain Climate Policy Term</h3>
+            <input type="text" id="policyTermInput" placeholder="e.g., NDC, Carbon Pricing, Net Zero" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0D6EFD] mb-4">
+            <button id="getPolicyExplanation" class="bg-[#0D6EFD] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 w-full">
                 Explain Term
             </button>
             <div id="policyExplanationLoading" class="loading-spinner"></div>
-            <div id="policyExplanationResult" class="mt-4 p-4 bg-stone-100 rounded-md text-stone-700 max-h-60 overflow-y-auto"></div>
+            <div id="policyExplanationResult" class="mt-4 p-4 bg-gray-100 rounded-md text-gray-700 max-h-60 overflow-y-auto"></div>
         </div>
     </div>
 
@@ -728,8 +872,8 @@
     <div id="decarbSuggesterModal" class="modal">
         <div class="modal-content">
             <span class="close-button" id="closeDecarbSuggester">&times;</span>
-            <h3 class="text-2xl font-bold mb-4 text-stone-900">✨ Decarbonization Action Plan Suggestor</h3>
-            <select id="decarbSectorSelect" class="w-full p-3 border border-stone-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0A5B4C] mb-4"> <!-- Updated green -->
+            <h3 class="text-2xl font-bold mb-4 text-gray-900">✨ Decarbonization Action Plan Suggestor</h3>
+            <select id="decarbSectorSelect" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0D6EFD] mb-4">
                 <option value="">Select a Sector</option>
                 <option value="Transportation">Transportation</option>
                 <option value="Industrial">Industrial</option>
@@ -738,16 +882,78 @@
                 <option value="Agriculture">Agriculture</option>
                 <option value="Waste Management">Waste Management</option>
             </select>
-            <button id="getDecarbPlan" class="bg-[#0A5B4C] hover:bg-[#064e3b] text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 w-full"> <!-- Updated green -->
+            <button id="getDecarbPlan" class="bg-[#0D6EFD] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition duration-300 w-full">
                 Generate Plan
             </button>
             <div id="decarbPlanLoading" class="loading-spinner"></div>
-            <div id="decarbPlanResult" class="mt-4 p-4 bg-stone-100 rounded-md text-stone-700 max-h-60 overflow-y-auto"></div>
+            <div id="decarbPlanResult" class="mt-4 p-4 bg-gray-100 rounded-md text-gray-700 max-h-60 overflow-y-auto"></div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        function wrapLabel(str, maxWidth) {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const colors = {
+            primary: '#0D6EFD', /* Blue */
+            secondary: '#6EA8FF', /* Light Blue */
+            accent: '#20C997', /* Emerald Green */
+            warning: '#FD7E14', /* Orange */
+            dark: '#212529', /* Dark Grey */
+            grey: '#6C757D' /* Medium Grey */
+        };
+
+        let charts = {}; // Object to store chart instances
+
+        function createChart(id, config) {
+            const ctx = document.getElementById(id)?.getContext('2d');
+            if (ctx) {
+                if (charts[id]) {
+                    charts[id].destroy(); // Destroy existing chart if it exists
+                }
+                charts[id] = new Chart(ctx, {
+                    type: config.type,
+                    data: config.data,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            tooltip: { callbacks: { title: tooltipTitleCallback } },
+                            ...config.options?.plugins
+                        },
+                        scales: config.options?.scales,
+                        ...config.options
+                    }
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('.content-section');
             const navLinks = document.querySelectorAll('.nav-link');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -766,13 +972,94 @@
 
                 navLinks.forEach(link => {
                     if (link.getAttribute('href') === currentHash) {
-                        link.classList.add('active', 'text-[#0A5B4C]'); // Updated green
-                        link.classList.remove('text-stone-600');
+                        link.classList.add('active', 'text-[#0D6EFD]');
+                        link.classList.remove('text-gray-600');
                     } else {
-                        link.classList.remove('active', 'text-[#0A5B4C]'); // Updated green
-                        link.classList.add('text-stone-600');
+                        link.classList.remove('active', 'text-[#0D6EFD]');
+                        link.classList.add('text-gray-600');
                     }
                 });
+
+                // Re-render charts for the active section to ensure they are drawn correctly if canvas was recreated
+                if (currentHash === '#policy') {
+                    createChart('ghgGapChart', {
+                        type: 'bar',
+                        data: {
+                            labels: [wrapLabel('Required GHG Reduction by 2030', 16), wrapLabel('Committed GHG Reduction by 2030', 16)],
+                            datasets: [{ label: '% GHG Reduction', data: [43, 2.6], backgroundColor: [colors.warning, colors.primary] }]
+                        },
+                        options: { scales: { y: { beginAtZero: true, title: { display: true, text: 'Reduction vs 2019 levels (%)' } } } }
+                    });
+                    createChart('financeGapChart', {
+                        type: 'bar',
+                        data: {
+                            labels: ['Annual Goal Met (2022)', wrapLabel('Estimated Annual Need', 16)],
+                            datasets: [{ label: 'Climate Finance (USD Trillions)', data: [0.116, 1.3], backgroundColor: [colors.accent, colors.warning] }]
+                        },
+                        options: { scales: { y: { type: 'logarithmic', title: { display: true, text: 'USD (Trillions) - Log Scale' } } } }
+                    });
+                    createChart('carbonBudgetChart', {
+                        type: 'line',
+                        data: {
+                            labels: ['2020', '2025', '2030', '2035', '2040', '2045', '2050'],
+                            datasets: [
+                                { label: 'High Emissions Scenario', data: [40, 38, 36, 34, 32, 30, 28], borderColor: '#EF4444', backgroundColor: '#FEE2E2', fill: false, tension: 0.1 },
+                                { label: 'Paris Aligned (1.5°C) Path', data: [40, 30, 20, 10, 5, 2, 0], borderColor: colors.primary, backgroundColor: '#E6F3FD', fill: false, tension: 0.1 }
+                            ]
+                        },
+                        options: { plugins: { legend: { display: true, position: 'bottom' } }, scales: { y: { title: { display: true, text: 'Cumulative CO2 Emissions (GtCO2)' }, beginAtZero: true } } }
+                    });
+                } else if (currentHash === '#netzero') {
+                    createChart('renewablesGoalChart', {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['On Track', 'Shortfall'],
+                            datasets: [{ data: [50, 50], backgroundColor: [colors.primary, '#e9ecef'], borderColor: '#ffffff', borderWidth: 2 }]
+                        },
+                        options: { cutout: '70%', plugins: { legend: { display: false } } }
+                    });
+                    createChart('efficiencyGoalChart', {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Current Progress (1%)', 'Shortfall (to 4%)'],
+                            datasets: [{ data: [1, 3], backgroundColor: [colors.warning, '#e9ecef'], borderColor: '#ffffff', borderWidth: 2 }]
+                        },
+                        options: { cutout: '70%', plugins: { legend: { display: false } } }
+                    });
+                } else if (currentHash === '#scope3') {
+                    createChart('scope3Chart', {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['Scope 3 (Value Chain)', 'Scope 1 & 2'],
+                            datasets: [{ data: [90, 10], backgroundColor: [colors.primary, colors.grey], borderColor: '#ffffff', borderWidth: 4 }]
+                        },
+                        options: { plugins: { legend: { position: 'bottom' } } }
+                    });
+                } else if (currentHash === '#tech') {
+                    createChart('greenPremiumChart', {
+                        type: 'bar',
+                        data: {
+                            labels: ['Steel', 'Hydrogen'],
+                            datasets: [
+                                { label: 'Traditional Cost', data: [100, 100], backgroundColor: colors.grey },
+                                { label: 'Green Premium Cost', data: [140, 300], backgroundColor: colors.accent }
+                            ]
+                        },
+                        options: {
+                            plugins: { legend: { position: 'bottom' }, tooltip: { callbacks: { title: tooltipTitleCallback, label: (c) => `${c.dataset.label}: ${c.raw}% of Traditional` } } },
+                            scales: { x: { stacked: true }, y: { stacked: true, display: false } },
+                            indexAxis: 'y'
+                        }
+                    });
+                    createChart('bessCostChart', {
+                        type: 'line',
+                        data: {
+                            labels: ['2010', '2013', '2023'],
+                            datasets: [{ label: 'Installed BESS Cost ($/kWh)', data: [2511, 1519, 273], borderColor: colors.primary, backgroundColor: 'rgba(13, 110, 253, 0.1)', fill: true, tension: 0.1 }]
+                        },
+                        options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, title: { display: true, text: 'Cost ($/kWh)' } } } }
+                    });
+                }
             }
 
             navLinks.forEach(link => {
@@ -788,225 +1075,9 @@
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
-
-            const techButtons = document.querySelectorAll('.tech-button');
-            const techContentArea = document.getElementById('tech-content-area');
-
-            const techData = {
-                hydrogen: {
-                    title: "Green Hydrogen: Cost Challenge (IEA Analysis)",
-                    description: "Green hydrogen is critical for decarbonizing heavy industry but remains expensive. The target price for competitiveness is $2-3/kg, but current costs are significantly higher without subsidies, primarily driven by the cost of renewable electricity and electrolyzers. <i>Source: IEA Hydrogen Report</i>",
-                    chartData: {
-                        labels: ['Grey Hydrogen (Fossil Fuel)', 'Green Hydrogen (Current)', '2030 Target'],
-                        datasets: [{
-                            label: 'Cost per kg (USD)',
-                            data: [1.5, 6, 2.5],
-                            backgroundColor: ['#78716c', '#f59e0b', '#0F766E'], // Updated green
-                        }]
-                    },
-                    options: {
-                        indexAxis: 'y',
-                        plugins: { legend: { display: false } }
-                    }
-                },
-                steel: {
-                    title: "Green Steel: The Price Premium (IEA Analysis)",
-                    description: "Decarbonizing steel production, a major source of global emissions, relies on technologies like H2-DRI. However, 'green steel' currently comes with a significant cost premium over traditional methods, creating a barrier to widespread adoption. <i>Source: IEA Industrial Decarbonization Report</i>",
-                    chartData: {
-                        labels: ['Traditional Steel (BF-BOF)', 'Green Steel (H2-DRI)'],
-                        datasets: [{
-                            label: 'Cost per ton (USD)',
-                            data: [520, 725],
-                            backgroundColor: ['#78716c', '#2563EB'], // Updated blue
-                        }]
-                    },
-                    options: {
-                        plugins: { legend: { display: false } }
-                    }
-                },
-                storage: {
-                    title: "Energy Storage: The Scaling Hurdle (IEA Analysis)",
-                    description: "To support a grid dominated by renewables, global energy storage capacity must increase dramatically. The COP29 pledge calls for a six-fold increase by 2030, but current projections fall short, highlighting the need for accelerated deployment and investment. <i>Source: IEA Energy Storage Report</i>",
-                    chartData: {
-                         labels: ['2022 Capacity', '2030 Target'],
-                         datasets: [{
-                            label: 'Global Storage Capacity (GW)',
-                            data: [250, 1500],
-                            backgroundColor: ['#78716c', '#0F766E'], // Updated green
-                         }]
-                    },
-                    options: {
-                         plugins: { legend: { display: false } }
-                    }
-                }
-            };
-
-            let currentTechChart = null;
-
-            function updateTechContent(techKey) {
-                const data = techData[techKey];
-                // Update the text content directly
-                document.querySelector('#tech-content-area .text-left h3').innerHTML = data.title;
-                document.querySelector('#tech-content-area .text-left p').innerHTML = data.description;
-
-                // Destroy old chart if exists
-                if (currentTechChart) {
-                    currentTechChart.destroy();
-                }
-
-                const ctx = document.getElementById('techChart')?.getContext('2d');
-                if (ctx) {
-                    const chartOptions = {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            x: { beginAtZero: true },
-                            y: { beginAtZero: true }
-                        },
-                        ...data.options
-                    };
-                    currentTechChart = new Chart(ctx, {
-                        type: data.options.indexAxis === 'y' ? 'bar' : 'bar',
-                        data: data.chartData,
-                        options: chartOptions
-                    });
-                }
-            }
-
-            techButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    techButtons.forEach(btn => {
-                        btn.classList.remove('border-[#0A5B4C]', 'text-[#0A5B4C]'); // Updated green
-                        btn.classList.add('border-transparent', 'text-stone-500');
-                    });
-                    button.classList.add('border-[#0A5B4C]', 'text-[#0A5B4C]'); // Updated green
-                    button.classList.remove('border-transparent', 'text-stone-500');
-                    updateTechContent(button.dataset.tech);
-                });
-            });
-
-            const chartConfigs = {
-                ghg: {
-                    id: 'ghgChart',
-                    type: 'bar',
-                    data: {
-                        labels: ['Required GHG Reduction by 2030', 'Committed GHG Reduction by 2030'],
-                        datasets: [{
-                            label: 'GHG Reduction vs 2019 levels (%)',
-                            data: [43, 2.6],
-                            backgroundColor: ['#2563EB', '#F59E0B'], // Blue and Amber
-                            borderColor: ['#1D4ED8', '#D97706'],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: { plugins: { legend: { display: false } } }
-                },
-                carbonBudget: {
-                    id: 'carbonBudgetChart',
-                    type: 'line',
-                    data: {
-                        labels: ['2020', '2025', '2030', '2035', '2040', '2045', '2050'],
-                        datasets: [{
-                            label: 'High Emissions Scenario',
-                            data: [40, 38, 36, 34, 32, 30, 28],
-                            borderColor: '#EF4444', // Red
-                            backgroundColor: '#FEE2E2',
-                            fill: false,
-                            tension: 0.1
-                        }, {
-                            label: 'Paris Aligned (1.5°C) Path',
-                            data: [40, 30, 20, 10, 5, 2, 0],
-                            borderColor: '#0A5B4C', // Darker green
-                            backgroundColor: '#E6F3F0',
-                            fill: false,
-                            tension: 0.1
-                        }]
-                    },
-                    options: {
-                        plugins: { legend: { display: true, position: 'bottom' } },
-                        scales: {
-                            y: { title: { display: true, text: 'Cumulative CO2 Emissions (GtCO2)' }, beginAtZero: true }
-                        }
-                    }
-                },
-                renewables: {
-                    id: 'renewablesChart',
-                    type: 'bar',
-                    data: {
-                        labels: ['Required Growth', 'Projected Growth'],
-                        datasets: [{
-                            label: 'Renewable Capacity Growth by 2030',
-                            data: [100, 50],
-                            backgroundColor: ['#0F766E', '#FACC15'], // Teal and Yellow
-                        }]
-                    },
-                    options: { 
-                        plugins: { legend: { display: false }, tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${c.raw}% of Goal` } } },
-                        scales: { y: { ticks: { callback: (v) => v + '%' } } }
-                    }
-                },
-                efficiency: {
-                    id: 'efficiencyChart',
-                    type: 'line',
-                    data: {
-                        labels: ['2010-2019 Avg', '2022', '2023-2024', '2030 Target'],
-                        datasets: [{
-                            label: 'Annual Energy Intensity Improvement',
-                            data: [2, 2, 1, 4],
-                            borderColor: '#EF4444', // Red
-                            backgroundColor: '#FEE2E2',
-                            tension: 0.1,
-                            fill: false
-                        }, {
-                            label: 'Target Path',
-                            data: [null, null, 1, 4],
-                            borderColor: '#0F766E', // Teal
-                            borderDash: [5, 5],
-                            fill: false
-                        }]
-                    },
-                    options: { 
-                        plugins: { legend: { display: true } },
-                        scales: { y: { title: { display: true, text: 'Improvement Rate (%)' } } }
-                    }
-                },
-                scope3: {
-                    id: 'scope3Chart',
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Scope 3 (Value Chain)', 'Scope 1 & 2 (Direct & Energy)'],
-                        datasets: [{
-                            data: [90, 10],
-                            backgroundColor: ['#0F766E', '#A8A29E'], // Teal and Gray
-                            hoverOffset: 4
-                        }]
-                    },
-                    options: { plugins: { legend: { position: 'bottom' } } }
-                }
-            };
-            
-            function renderChart(config) {
-                 const ctx = document.getElementById(config.id)?.getContext('2d');
-                 if(ctx) {
-                    new Chart(ctx, {
-                        type: config.type,
-                        data: config.data,
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            ...config.options
-                        }
-                    });
-                 }
-            }
-            
-            // Render all initial charts
-            Object.values(chartConfigs).forEach(renderChart);
             
             updateActiveState();
-            updateTechContent('hydrogen'); // Initialize tech section with hydrogen data
 
-            // LLM Integration Logic
             const policyExplainerModal = document.getElementById('policyExplainerModal');
             const openPolicyExplainerBtn = document.getElementById('openPolicyExplainer');
             const closePolicyExplainerBtn = document.getElementById('closePolicyExplainer');
@@ -1023,7 +1094,6 @@
             const decarbPlanResult = document.getElementById('decarbPlanResult');
             const decarbPlanLoading = document.getElementById('decarbPlanLoading');
 
-            // Open/Close Modals
             openPolicyExplainerBtn.addEventListener('click', () => {
                 policyExplainerModal.style.display = 'flex';
                 policyExplanationResult.innerHTML = '';
@@ -1051,7 +1121,6 @@
                 }
             });
 
-            // Gemini API Call for Policy Explainer
             getPolicyExplanationBtn.addEventListener('click', async () => {
                 const term = policyTermInput.value.trim();
                 if (!term) {
@@ -1092,7 +1161,6 @@
                 }
             });
 
-            // Gemini API Call for Decarbonization Suggester
             getDecarbPlanBtn.addEventListener('click', async () => {
                 const sector = decarbSectorSelect.value;
                 if (!sector) {
@@ -1133,7 +1201,6 @@
                 }
             });
 
-            // Accordion Logic
             const accordionHeaders = document.querySelectorAll('.accordion-header');
             accordionHeaders.forEach(header => {
                 header.addEventListener('click', () => {
@@ -1144,35 +1211,34 @@
                         content.style.maxHeight = '0';
                         content.classList.remove('open');
                         header.classList.remove('active');
-                        arrow.innerHTML = '&#9660;'; // Down arrow
+                        arrow.innerHTML = '&#9660;';
                     } else {
-                        // Close all other open accordions in the same section
                         const parentSection = header.closest('.content-section');
                         parentSection.querySelectorAll('.accordion-content.open').forEach(openContent => {
-                            openContent.style.maxHeight = '0';
-                            openContent.classList.remove('open');
-                            openContent.previousElementSibling.classList.remove('active');
-                            openContent.previousElementSibling.querySelector('span:last-child').innerHTML = '&#9660;';
+                            if (openContent !== content) { // Don't close itself if it's already open
+                                openContent.style.maxHeight = '0';
+                                openContent.classList.remove('open');
+                                openContent.previousElementSibling.classList.remove('active');
+                                openContent.previousElementSibling.querySelector('span:last-child').innerHTML = '&#9660;';
+                            }
                         });
 
-                        content.style.maxHeight = content.scrollHeight + 'px'; // Set max-height
+                        content.style.maxHeight = content.scrollHeight + 'px';
                         content.classList.add('open');
                         header.classList.add('active');
-                        arrow.innerHTML = '&#9650;'; // Up arrow
+                        arrow.innerHTML = '&#9650;';
                     }
                 });
             });
 
-            // Skill Card Logic
             const skillCards = document.querySelectorAll('.skill-card');
             skillCards.forEach(card => {
                 card.addEventListener('click', () => {
                     const description = card.querySelector('.skill-description');
-                    if (description.classList.contains('open')) { // If it's currently open
+                    if (description.classList.contains('open')) {
                         description.style.maxHeight = '0';
                         description.classList.remove('open');
-                    } else { // If it's currently closed
-                        // Close all other open skill descriptions
+                    } else {
                         document.querySelectorAll('.skill-description.open').forEach(openDesc => {
                             if (openDesc !== description) {
                                 openDesc.style.maxHeight = '0';
